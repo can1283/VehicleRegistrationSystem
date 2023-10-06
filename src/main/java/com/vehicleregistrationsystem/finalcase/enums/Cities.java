@@ -1,4 +1,4 @@
-package com.vehicleregistrationsystem.finalcase.model.enums;
+package com.vehicleregistrationsystem.finalcase.enums;
 
 public enum Cities {
     ADANA,

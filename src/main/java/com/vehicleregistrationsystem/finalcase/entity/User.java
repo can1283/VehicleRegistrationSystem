@@ -1,14 +1,14 @@
-package com.vehicleregistrationsystem.finalcase.model.entity;
+package com.vehicleregistrationsystem.finalcase.entity;
 
 import com.fasterxml.jackson.annotation.JsonManagedReference;
-import com.vehicleregistrationsystem.finalcase.model.enums.Cities;
+import com.vehicleregistrationsystem.finalcase.enums.Cities;
 import jakarta.persistence.*;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
-import java.util.UUID;
 
 @Entity
 @Data
@@ -16,8 +16,9 @@ import java.util.UUID;
 @Table(name = "users")
 public class User {
     @Id
-    @GeneratedValue(strategy = GenerationType.UUID)
-    private UUID id;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+
     private String userName;
     private String password;
     private String firstName;
@@ -31,7 +32,7 @@ public class User {
 
     @OneToMany(mappedBy = "user")
     @JsonManagedReference
-    private List<Vehicle> vehicles;
+    private List<Vehicle> vehicles = new ArrayList<>();
 
     public User(String userName, String password, String firstName, String lastName, Cities city, Date accountCreationDate, List<Vehicle> vehicles) {
         this.userName = userName;
