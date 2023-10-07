@@ -1,5 +1,6 @@
 package com.vehicleregistrationsystem.finalcase.entity;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.vehicleregistrationsystem.finalcase.enums.Cities;
 import jakarta.persistence.*;
@@ -27,14 +28,13 @@ public class User {
     @Enumerated(EnumType.STRING)
     private Cities city;
 
-    @Temporal(value = TemporalType.DATE)
-    private Date accountCreationDate;
+    private String accountCreationDate;
 
     @OneToMany(mappedBy = "user")
     @JsonManagedReference
     private List<Vehicle> vehicles = new ArrayList<>();
 
-    public User(String userName, String password, String firstName, String lastName, Cities city, Date accountCreationDate, List<Vehicle> vehicles) {
+    public User(String userName, String password, String firstName, String lastName, Cities city, String accountCreationDate, List<Vehicle> vehicles) {
         this.userName = userName;
         this.password = password;
         this.firstName = firstName;

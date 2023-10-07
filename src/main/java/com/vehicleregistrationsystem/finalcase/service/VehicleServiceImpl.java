@@ -11,7 +11,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 @Service
@@ -35,6 +37,10 @@ public class VehicleServiceImpl implements VehicleService{
         BeanUtils.copyProperties(vehicleRequestDTO, vehicle);
         vehicle.setUser(user);
 
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        String formattedDate = simpleDateFormat.format(new Date());
+        vehicle.setVehiclesCreationDate(formattedDate);
+
         Vehicle savedVehicle = vehicleRepository.save(vehicle);
         VehicleResponseDto responseDTO = new VehicleResponseDto();
         BeanUtils.copyProperties(savedVehicle, responseDTO);
@@ -56,9 +62,7 @@ public class VehicleServiceImpl implements VehicleService{
 
     @Override
     public void deleteVehicle(Long vehicleId) {
-        Vehicle existingVehicle = vehicleRepository.findById(vehicleId)
-                .orElseThrow(() -> new IllegalArgumentException("Araç bulunamadı"));
-
+        Vehicle existingVehicle = vehicleRepository.findById(vehicleId).orElseThrow(() -> new IllegalArgumentException("Araç bulunamadı"));
         vehicleRepository.delete(existingVehicle);
     }
 

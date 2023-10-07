@@ -9,5 +9,6 @@ public class VehicleResponseDto {
     private String brand;
     private String model;
     private String plateCode;
+    private String vehiclesCreationDate;
     private int modelYear;
 }

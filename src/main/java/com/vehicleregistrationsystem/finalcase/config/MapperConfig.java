@@ -6,13 +6,12 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 @Configuration
-public class ModelMapperConfig {
-
+public class MapperConfig {
     @Bean
     public ModelMapper getModelMapper() {
         ModelMapper modelMapper = new ModelMapper();
-        modelMapper.getConfiguration().setMatchingStrategy(MatchingStrategies.STRICT);
+        // LOOSE fieldNamee göre eşleştirir
+        modelMapper.getConfiguration().setMatchingStrategy(MatchingStrategies.LOOSE);
         return modelMapper;
     }
-
 }

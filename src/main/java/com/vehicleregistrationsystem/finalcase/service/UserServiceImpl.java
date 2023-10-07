@@ -12,7 +12,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 @Service
@@ -58,7 +61,12 @@ public class UserServiceImpl implements UserService{
         User user = new User();
         BeanUtils.copyProperties(userRequestDTO, user);
 
+        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        String formattedDate = dateFormat.format(new Date());
+        user.setAccountCreationDate(formattedDate);
+
         User savedUser = userRepository.save(user);
+
         UserResponseDto responseDto = new UserResponseDto();
         BeanUtils.copyProperties(savedUser, responseDto);
 
@@ -71,8 +79,6 @@ public class UserServiceImpl implements UserService{
                 .orElseThrow(() -> new IllegalArgumentException("Kullanıcı bulunamadı"));
 
         BeanUtils.copyProperties(userRequestDTO, existingUser);
-
-        // Diğer gerekli güncelleme işlemlerini burada gerçekleştirin.
 
         User updatedUser = userRepository.save(existingUser);
         UserResponseDto responseDTO = new UserResponseDto();

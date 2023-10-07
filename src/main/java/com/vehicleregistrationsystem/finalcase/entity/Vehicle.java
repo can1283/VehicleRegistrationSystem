@@ -19,6 +19,7 @@ public class Vehicle {
     private String brand;
     private String model;
     private String plateCode;
+    private String vehiclesCreationDate;
     private int modelYear;
 
     @ManyToOne
@@ -26,11 +27,12 @@ public class Vehicle {
     @JsonBackReference
     private User user;
 
-    public Vehicle(String name, String brand, String model, String plateCode, int modelYear, User user) {
+    public Vehicle(String name, String brand, String model, String plateCode, String vehiclesCreationDate, int modelYear, User user) {
         this.name = name;
         this.brand = brand;
         this.model = model;
         this.plateCode = plateCode;
+        this.vehiclesCreationDate = vehiclesCreationDate;
         this.modelYear = modelYear;
         this.user = user;
     }

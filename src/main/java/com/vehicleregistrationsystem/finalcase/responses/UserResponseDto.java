@@ -13,6 +13,6 @@ public class UserResponseDto {
     private String firstName;
     private String lastName;
     private Cities city;
-    private Date accountCreationDate;
+    private String accountCreationDate;
     private List<VehicleResponseDto> vehicles;
 }
