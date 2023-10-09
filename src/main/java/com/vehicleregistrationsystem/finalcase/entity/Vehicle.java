@@ -21,19 +21,21 @@ public class Vehicle {
     private String plateCode;
     private String vehiclesCreationDate;
     private int modelYear;
+    private boolean active;
 
     @ManyToOne
     @JoinColumn(name = "user_id", referencedColumnName = "id")
     @JsonBackReference
     private User user;
 
-    public Vehicle(String name, String brand, String model, String plateCode, String vehiclesCreationDate, int modelYear, User user) {
+    public Vehicle(String name, String brand, String model, String plateCode, String vehiclesCreationDate, int modelYear, boolean active, User user) {
         this.name = name;
         this.brand = brand;
         this.model = model;
         this.plateCode = plateCode;
         this.vehiclesCreationDate = vehiclesCreationDate;
         this.modelYear = modelYear;
+        this.active = active;
         this.user = user;
     }
 }

@@ -1,10 +1,15 @@
 package com.vehicleregistrationsystem.finalcase.controller;
 
+import com.vehicleregistrationsystem.finalcase.entity.Vehicle;
 import com.vehicleregistrationsystem.finalcase.requests.VehicleRequestDto;
 import com.vehicleregistrationsystem.finalcase.responses.VehicleResponseDto;
-import com.vehicleregistrationsystem.finalcase.service.VehicleService;
+import com.vehicleregistrationsystem.finalcase.service.interfaces.VehicleService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -46,6 +51,27 @@ public class VehicleController {
     public ResponseEntity<Void> deleteVehicle(@PathVariable Long vehicleId) {
         vehicleService.deleteVehicle(vehicleId);
         return ResponseEntity.noContent().build();
+    }
+
+    @GetMapping("/user/{userId}/vehicles/sorted")
+    public ResponseEntity<List<VehicleResponseDto>> getAllVehiclesSorted(
+            @PathVariable Long userId,
+            @RequestParam(required = false, defaultValue = "asc") String sortDirection,
+            @RequestParam(required = false, defaultValue = "brand") String sortBy)
+    {
+        Sort.Direction direction = "asc".equalsIgnoreCase(sortDirection) ? Sort.Direction.ASC : Sort.Direction.DESC;
+        final List<VehicleResponseDto> vehicleResponseDtoList = vehicleService.getAllVehiclesSorted(userId, direction, sortBy);
+        return ResponseEntity.ok(vehicleResponseDtoList);
+    }
+
+    @GetMapping("/user/{userId}/slice")
+    public ResponseEntity<List<VehicleResponseDto>> sliceVehiclesByUserId(
+            @PathVariable Long userId,
+            @RequestParam(defaultValue = "1") int pageNo,
+            @RequestParam(defaultValue = "10") int pageSize
+    ) {
+        List<VehicleResponseDto> vehicleResponseDtoList = vehicleService.sliceVehiclesByUserId(userId, pageNo, pageSize);
+        return ResponseEntity.ok(vehicleResponseDtoList);
     }
 
 }

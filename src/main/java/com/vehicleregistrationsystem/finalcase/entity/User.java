@@ -1,6 +1,5 @@
 package com.vehicleregistrationsystem.finalcase.entity;
 
-import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.vehicleregistrationsystem.finalcase.enums.Cities;
 import jakarta.persistence.*;
@@ -8,7 +7,6 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 @Entity
@@ -21,6 +19,7 @@ public class User {
     private Long id;
 
     private String userName;
+    private String mail;
     private String password;
     private String firstName;
     private String lastName;
@@ -30,12 +29,13 @@ public class User {
 
     private String accountCreationDate;
 
-    @OneToMany(mappedBy = "user")
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
     @JsonManagedReference
     private List<Vehicle> vehicles = new ArrayList<>();
 
-    public User(String userName, String password, String firstName, String lastName, Cities city, String accountCreationDate, List<Vehicle> vehicles) {
+    public User(String userName, String mail, String password, String firstName, String lastName, Cities city, String accountCreationDate, List<Vehicle> vehicles) {
         this.userName = userName;
+        this.mail = mail;
         this.password = password;
         this.firstName = firstName;
         this.lastName = lastName;

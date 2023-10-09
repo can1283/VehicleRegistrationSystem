@@ -1,10 +1,7 @@
 package com.vehicleregistrationsystem.finalcase.requests;
 
 import jakarta.annotation.Nullable;
-import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.NotNull;
-import jakarta.validation.constraints.Pattern;
-import jakarta.validation.constraints.Size;
+import jakarta.validation.constraints.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -33,4 +30,8 @@ public class VehicleRequestDto {
 
     @NotNull(message = "Model year cannot be null!")
     private int modelYear;
+
+    @NotNull(message = "Active status cannot be null!")
+    @AssertTrue
+    private boolean active;
 }

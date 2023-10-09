@@ -4,13 +4,11 @@ import com.vehicleregistrationsystem.finalcase.enums.Cities;
 import jakarta.annotation.Nullable;
 import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;
-import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.NotNull;
-import jakarta.validation.constraints.Pattern;
-import jakarta.validation.constraints.Size;
+import jakarta.validation.constraints.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+
 import java.util.List;
 
 @Data
@@ -23,10 +21,15 @@ public class UserRequestDto {
     @Size(min = 4, max = 16, message = "Username size must be between {min} and {max}!")
     private String userName;
 
+    @NotNull(message = "Mail cannot be null!")
+    @NotBlank(message = "Mail is required!")
+    @Email(regexp = "^[\\w-\\.]+@([\\w-]+\\.)+[\\w-]{2,4}$", message = "Mail is not valid!")
+    private String mail;
+
     @NotNull(message = "Password cannot be null!")
     @Size(min = 8, max = 16, message = "Password size must be between {min} and {max}!")
     @NotBlank(message = "Password is required!")
-    @Pattern(regexp = "^(?=.*\\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,}$", message = "Password is not valid!") // A s . 8
+    @Pattern(regexp = "^(?=.*\\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,}$", message = "Password is not valid!")
     private String password;
 
     @NotNull(message = "First name cannot be null!")

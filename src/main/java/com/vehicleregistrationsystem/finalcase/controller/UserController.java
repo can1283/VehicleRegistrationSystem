@@ -1,13 +1,15 @@
 package com.vehicleregistrationsystem.finalcase.controller;
 
-import com.vehicleregistrationsystem.finalcase.exception.GlobalExceptionHandler;
+import com.vehicleregistrationsystem.finalcase.entity.User;
 import com.vehicleregistrationsystem.finalcase.requests.UserRequestDto;
 import com.vehicleregistrationsystem.finalcase.responses.UserResponseDto;
-import com.vehicleregistrationsystem.finalcase.service.UserService;
+import com.vehicleregistrationsystem.finalcase.service.interfaces.UserService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
-import org.modelmapper.ModelMapper;
-import org.springframework.http.HttpStatus;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -49,6 +51,26 @@ public class UserController {
     public ResponseEntity<Void> deleteUser(@PathVariable Long userId) {
         userService.deleteUser(userId);
         return ResponseEntity.noContent().build();
+    }
+
+    @GetMapping("/pageable")
+    public ResponseEntity<List<UserResponseDto>> slice(int pageNo, int pageSize) {
+        List<UserResponseDto> slice = userService.slice(pageNo, pageSize);
+        return ResponseEntity.ok(slice);
+    }
+
+    @GetMapping("/sorted-by-username")
+    public ResponseEntity<List<UserResponseDto>> getAllUsersSortedByUserName(@RequestParam(required = false, defaultValue = "ASC") String direction) {
+        Sort.Direction sort = "DESC".equalsIgnoreCase(direction) ? Sort.Direction.DESC : Sort.Direction.ASC;
+        final List<UserResponseDto> userResponseDtoList = userService.getAllUsersSortedByUserName(sort);
+        return ResponseEntity.ok(userResponseDtoList);
+    }
+
+    @GetMapping("/sorted-by-creation-date")
+    public ResponseEntity<List<UserResponseDto>> getAllUsersSortedByCreationDate(@RequestParam(required = false, defaultValue = "ASC") String direction) {
+        Sort.Direction sort = "DESC".equalsIgnoreCase(direction) ? Sort.Direction.DESC : Sort.Direction.ASC;
+        final List<UserResponseDto> userResponseDtoList = userService.getAllUsersSortedByCreationDate(sort);
+        return ResponseEntity.ok(userResponseDtoList);
     }
 
 }
