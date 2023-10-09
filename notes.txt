@@ -1,7 +1,3 @@
-- sorted
-- unique mail - username- plaka
-- tablo srsaı
-- pageable araba için
 
 ### Kullanıcı İşlemleri
 + Kullanıcıları Listele: GET http://localhost:8080/api/users
@@ -21,4 +17,3 @@
 - Araç Detayları: GET http://localhost:8080/api/vehicles/{{vehicleId}}
 - Araç Güncelle: PUT http://localhost:8080/api/vehicles/{{vehicleId}}
 - Araç Sil: DELETE http://localhost:8080/api/vehicles/{{vehicleId}}
-

@@ -18,6 +18,8 @@ public class Vehicle {
     private String name;
     private String brand;
     private String model;
+
+    @Column(unique = true)
     private String plateCode;
     private String vehiclesCreationDate;
     private int modelYear;

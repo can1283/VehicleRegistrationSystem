@@ -74,4 +74,18 @@ public class VehicleController {
         return ResponseEntity.ok(vehicleResponseDtoList);
     }
 
+    @GetMapping("/byBrand")
+    public ResponseEntity<List<VehicleResponseDto>> getVehiclesByBrand(
+            @RequestParam(name = "brand") String brand) {
+        List<VehicleResponseDto> vehicles = vehicleService.getVehiclesByBrand(brand);
+        return ResponseEntity.ok(vehicles);
+    }
+
+    @GetMapping("/byModel")
+    public ResponseEntity<List<VehicleResponseDto>> getVehiclesByModel(
+            @RequestParam(name = "model") String model) {
+        List<VehicleResponseDto> vehicles = vehicleService.getVehiclesByModel(model);
+        return ResponseEntity.ok(vehicles);
+    }
+
 }

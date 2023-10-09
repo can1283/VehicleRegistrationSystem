@@ -14,4 +14,7 @@ public interface VehicleRepository extends JpaRepository<Vehicle, Long> {
     List<Vehicle> findByUser(User user);
     List<Vehicle> findByUser(User user, Sort sort);
     Page<Vehicle> findByUserId(Long userId, Pageable pageable);
+    boolean existsUserByPlateCode(String plateCode);
+    List<Vehicle> findByBrand(String brand);
+    List<Vehicle> findByModel(String model);
 }

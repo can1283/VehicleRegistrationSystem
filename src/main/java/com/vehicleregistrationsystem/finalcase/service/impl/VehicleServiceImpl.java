@@ -123,6 +123,22 @@ public class VehicleServiceImpl implements VehicleService {
                 .collect(Collectors.toList());
     }
 
+    @Override
+    public List<VehicleResponseDto> getVehiclesByBrand(String brand) {
+        List<Vehicle> vehicles = vehicleRepository.findByBrand(brand);
+        return vehicles.stream()
+                .map(this::mapVehicleToResponseDto)
+                .collect(Collectors.toList());
+    }
+
+    @Override
+    public List<VehicleResponseDto> getVehiclesByModel(String model) {
+        List<Vehicle> vehicles = vehicleRepository.findByModel(model);
+        return vehicles.stream()
+                .map(this::mapVehicleToResponseDto)
+                .collect(Collectors.toList());
+    }
+
     private VehicleResponseDto mapVehicleToResponseDto(Vehicle vehicle) {
         VehicleResponseDto responseDto = new VehicleResponseDto();
         BeanUtils.copyProperties(vehicle, responseDto);

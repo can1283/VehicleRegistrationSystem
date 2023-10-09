@@ -15,11 +15,11 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 public class UserResponseDto {
+    private String accountCreationDate;
     private String userName;
     private String mail;
     private String firstName;
     private String lastName;
     private Cities city;
-    private String accountCreationDate;
     private List<VehicleResponseDto> vehicles;
 }

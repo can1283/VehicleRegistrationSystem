@@ -1,6 +1,8 @@
 package com.vehicleregistrationsystem.finalcase.requests;
 
 import com.vehicleregistrationsystem.finalcase.enums.Cities;
+import com.vehicleregistrationsystem.finalcase.validations.UniqueMail;
+import com.vehicleregistrationsystem.finalcase.validations.UniqueUserName;
 import jakarta.annotation.Nullable;
 import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;
@@ -19,11 +21,13 @@ public class UserRequestDto {
     @NotNull(message = "Username cannot be null!")
     @NotBlank(message = "Username is required!")
     @Size(min = 4, max = 16, message = "Username size must be between {min} and {max}!")
+    @UniqueUserName
     private String userName;
 
     @NotNull(message = "Mail cannot be null!")
     @NotBlank(message = "Mail is required!")
     @Email(regexp = "^[\\w-\\.]+@([\\w-]+\\.)+[\\w-]{2,4}$", message = "Mail is not valid!")
+    @UniqueMail
     private String mail;
 
     @NotNull(message = "Password cannot be null!")

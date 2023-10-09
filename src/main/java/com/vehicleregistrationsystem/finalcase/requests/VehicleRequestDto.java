@@ -1,5 +1,6 @@
 package com.vehicleregistrationsystem.finalcase.requests;
 
+import com.vehicleregistrationsystem.finalcase.validations.UniquePlateCode;
 import jakarta.annotation.Nullable;
 import jakarta.validation.constraints.*;
 import lombok.AllArgsConstructor;
@@ -23,13 +24,14 @@ public class VehicleRequestDto {
     @Size(min = 1, max = 16, message = "Model size must be between {min} and {max}!")
     private String model;
 
+    @NotNull(message = "Model year cannot be null!")
+    private int modelYear;
+
     @NotNull(message = "Plate code cannot be null!")
     @Size(min = 6, max = 8, message = "Plate code size must be between {min} and {max}!")
     @Pattern(regexp = "^(?=.{1,8}$)([0-9]{2}|[01]{2})([A-Za-z]{2,})([0-9]{2,})$", message = "Plate code is not valid!")
+    @UniquePlateCode
     private String plateCode;
-
-    @NotNull(message = "Model year cannot be null!")
-    private int modelYear;
 
     @NotNull(message = "Active status cannot be null!")
     @AssertTrue

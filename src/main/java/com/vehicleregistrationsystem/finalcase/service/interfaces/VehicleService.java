@@ -17,4 +17,6 @@ public interface VehicleService {
     List<VehicleResponseDto> getAllVehiclesByUserId(Long userId);
     List<VehicleResponseDto> getAllVehiclesSorted(Long userId, Sort.Direction direction, String sortBy);
     List<VehicleResponseDto> sliceVehiclesByUserId(Long userId, int pageNo, int pageSize);
+    List<VehicleResponseDto> getVehiclesByBrand(String brand);
+    List<VehicleResponseDto> getVehiclesByModel(String model);
 }

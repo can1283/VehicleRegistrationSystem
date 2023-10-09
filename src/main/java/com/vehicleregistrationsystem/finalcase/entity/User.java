@@ -5,6 +5,7 @@ import com.vehicleregistrationsystem.finalcase.enums.Cities;
 import jakarta.persistence.*;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.hibernate.validator.constraints.UniqueElements;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -18,16 +19,20 @@ public class User {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private String userName;
-    private String mail;
-    private String password;
+    private String accountCreationDate;
     private String firstName;
     private String lastName;
 
+    @Column(unique = true)
+    private String userName;
+
+    @Column(unique = true)
+    private String mail;
+
+    private String password;
+
     @Enumerated(EnumType.STRING)
     private Cities city;
-
-    private String accountCreationDate;
 
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
     @JsonManagedReference
