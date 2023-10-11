@@ -131,12 +131,9 @@ public class UserServiceImpl implements UserService {
         return vehicleResponseDto;
     }
 
-    public Date getCurrentDateTime() {
-        return new Date();
-    }
-
     public String formatDate() {
+        Date getCurrentTime = new Date();
         SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-        return simpleDateFormat.format(getCurrentDateTime());
+        return simpleDateFormat.format(getCurrentTime);
     }
 }

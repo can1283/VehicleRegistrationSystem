@@ -1,3 +1,4 @@
+- asc desc bazı metotlarda küçük
 
 ### Kullanıcı İşlemleri
 + Kullanıcıları Listele: GET http://localhost:8080/api/users
