@@ -1,5 +1,5 @@
 - asc desc bazı metotlarda küçük
-
+	loginrequestte regexlere bak
 ### Kullanıcı İşlemleri
 + Kullanıcıları Listele: GET http://localhost:8080/api/users
 - Kullanıcı Ekle: POST http://localhost:8080/api/users
