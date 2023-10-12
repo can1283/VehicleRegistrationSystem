@@ -78,6 +78,7 @@ public class AuthServiceImpl implements AuthService {
         List<VehicleResponseDto> vehicleResponseDtoList = user.getVehicles().stream()
                 .map(vehicle -> {
                     VehicleResponseDto vehicleResponseDto = new VehicleResponseDto();
+                    vehicleResponseDto.setId(vehicle.getId());
                     vehicleResponseDto.setVehiclesCreationDate(vehicle.getVehiclesCreationDate());
                     vehicleResponseDto.setName(vehicle.getName());
                     vehicleResponseDto.setBrand(vehicle.getBrand());

@@ -53,10 +53,10 @@ public class VehicleController {
     @GetMapping("/user/{userId}/vehicles/sorted")
     public ResponseEntity<List<VehicleResponseDto>> getAllVehiclesSorted(
             @PathVariable Long userId,
-            @RequestParam(required = false, defaultValue = "asc") String sortDirection,
+            @RequestParam(required = false, defaultValue = "ASC") String sortDirection,
             @RequestParam(required = false, defaultValue = "brand") String sortBy)
     {
-        Sort.Direction direction = "asc".equalsIgnoreCase(sortDirection) ? Sort.Direction.ASC : Sort.Direction.DESC;
+        Sort.Direction direction = "ASC".equalsIgnoreCase(sortDirection) ? Sort.Direction.ASC : Sort.Direction.DESC;
         final List<VehicleResponseDto> vehicleResponseDtoList = vehicleService.getAllVehiclesSorted(userId, direction, sortBy);
         return ResponseEntity.ok(vehicleResponseDtoList);
     }

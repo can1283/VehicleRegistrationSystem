@@ -34,6 +34,5 @@ public class VehicleRequestDto {
     private String plateCode;
 
     @NotNull(message = "Active status cannot be null!")
-    @AssertTrue
     private boolean active;
 }
