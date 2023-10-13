@@ -1,14 +1,13 @@
 package com.vehicleregistrationsystem.finalcase.controller;
 
 import com.vehicleregistrationsystem.finalcase.requests.LoginRequestDto;
+import com.vehicleregistrationsystem.finalcase.requests.PasswordRequestDto;
 import com.vehicleregistrationsystem.finalcase.requests.RegisterRequestDto;
+import com.vehicleregistrationsystem.finalcase.responses.PasswordResponseDto;
 import com.vehicleregistrationsystem.finalcase.responses.UserResponseDto;
 import com.vehicleregistrationsystem.finalcase.service.interfaces.AuthService;
 import jakarta.validation.Valid;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("api/auth")
@@ -29,6 +28,13 @@ public class AuthController {
     @PostMapping("/login")
     public UserResponseDto login(@RequestBody LoginRequestDto loginRequestDto) {
         return authService.login(loginRequestDto);
+    }
+
+    @PostMapping("/change-password/{userId}")
+    public PasswordResponseDto changePassword(
+            @PathVariable Long userId,
+            @RequestBody PasswordRequestDto passwordRequestDto) {
+        return authService.changePass(userId, passwordRequestDto);
     }
 
 }

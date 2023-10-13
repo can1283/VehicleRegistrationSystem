@@ -1,10 +1,11 @@
 package com.vehicleregistrationsystem.finalcase.service.impl;
 
 import com.vehicleregistrationsystem.finalcase.entity.User;
-import com.vehicleregistrationsystem.finalcase.entity.Vehicle;
 import com.vehicleregistrationsystem.finalcase.repository.UserRepository;
 import com.vehicleregistrationsystem.finalcase.requests.LoginRequestDto;
+import com.vehicleregistrationsystem.finalcase.requests.PasswordRequestDto;
 import com.vehicleregistrationsystem.finalcase.requests.RegisterRequestDto;
+import com.vehicleregistrationsystem.finalcase.responses.PasswordResponseDto;
 import com.vehicleregistrationsystem.finalcase.responses.UserResponseDto;
 import com.vehicleregistrationsystem.finalcase.responses.VehicleResponseDto;
 import com.vehicleregistrationsystem.finalcase.service.interfaces.AuthService;
@@ -14,6 +15,7 @@ import org.springframework.stereotype.Service;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Service
@@ -54,7 +56,6 @@ public class AuthServiceImpl implements AuthService {
 
         return userResponseDto;
     }
-
     @Override
     public UserResponseDto login(LoginRequestDto loginRequestDto) {
         User user = userRepository.findByUserName(loginRequestDto.getUsername());
@@ -92,6 +93,33 @@ public class AuthServiceImpl implements AuthService {
         userResponseDto.setVehicles(vehicleResponseDtoList);
 
         return userResponseDto;
+    }
+
+    @Override
+    public PasswordResponseDto changePass(Long id, PasswordRequestDto passwordRequestDto) {
+        Optional<User> optionalUser = userRepository.findById(id);
+
+        if (optionalUser.isEmpty()) {
+            throw new RuntimeException("User not found");
+        }
+
+        User user = optionalUser.get();
+
+        // Validate the current password
+        if (!passwordRequestDto.getCurrentPassword().equals(user.getPassword())) {
+            throw new RuntimeException("Current password is incorrect");
+        }
+
+        // Update the user's password with the new one
+        user.setPassword(passwordRequestDto.getNewPassword());
+        userRepository.save(user);
+
+        // Create a response indicating success
+        PasswordResponseDto response = new PasswordResponseDto();
+        response.setId(user.getId());
+        response.setPassword("Password changed successfully");
+
+        return response;
     }
 
     public String formatDate() {
