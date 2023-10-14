@@ -13,7 +13,7 @@ import lombok.NoArgsConstructor;
 public class VehicleRequestDto {
 
     @Nullable
-    @Size(min = 2, max = 16, message = "Name size must be between {min} and {max}!")
+    @Size(min = 2, max = 30, message = "Name size must be between {min} and {max}!")
     private String name;
 
     @NotNull(message = "Brand cannot be null!")
