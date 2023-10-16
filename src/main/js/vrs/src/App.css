@@ -1,0 +1,22 @@
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-track {
+    border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #4b4b4b;
+}
+
+*{
+    font-family: 'Poppins', sans-serif;
+}
+
+#car{
+    width: 900px;
+    position: absolute;
+    top: 250px;
+    left: 1000px;
+}
