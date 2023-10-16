@@ -21,8 +21,8 @@ public class GlobalExceptionHandler {
 
     @ExceptionHandler(Exception.class)
     public ResponseEntity<CustomException> handleExceptions(Exception e, WebRequest webRequest) {
-        CustomException customException=new CustomException();
-        customException.setPath(((ServletWebRequest)webRequest).getRequest().getRequestURI());
+        CustomException customException = new CustomException();
+        customException.setPath(((ServletWebRequest) webRequest).getRequest().getRequestURI());
         customException.setMessage(e.getMessage());
         customException.setDateTime(LocalDateTime.now());
         return new ResponseEntity<>(customException, HttpStatus.INTERNAL_SERVER_ERROR);

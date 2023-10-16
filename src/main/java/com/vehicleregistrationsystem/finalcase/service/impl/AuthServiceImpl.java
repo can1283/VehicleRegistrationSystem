@@ -2,20 +2,15 @@ package com.vehicleregistrationsystem.finalcase.service.impl;
 
 import com.vehicleregistrationsystem.finalcase.entity.User;
 import com.vehicleregistrationsystem.finalcase.repository.UserRepository;
-import com.vehicleregistrationsystem.finalcase.requests.LoginRequestDto;
-import com.vehicleregistrationsystem.finalcase.requests.PasswordRequestDto;
-import com.vehicleregistrationsystem.finalcase.requests.RegisterRequestDto;
-import com.vehicleregistrationsystem.finalcase.responses.PasswordResponseDto;
-import com.vehicleregistrationsystem.finalcase.responses.UserResponseDto;
-import com.vehicleregistrationsystem.finalcase.responses.VehicleResponseDto;
+import com.vehicleregistrationsystem.finalcase.requests.*;
+import com.vehicleregistrationsystem.finalcase.responses.*;
 import com.vehicleregistrationsystem.finalcase.service.interfaces.AuthService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.beans.BeanUtils;
 import org.springframework.stereotype.Service;
 
 import java.text.SimpleDateFormat;
-import java.util.Date;
-import java.util.List;
-import java.util.Optional;
+import java.util.*;
 import java.util.stream.Collectors;
 
 @Service
@@ -27,66 +22,40 @@ public class AuthServiceImpl implements AuthService {
     @Override
     public UserResponseDto register(RegisterRequestDto registerRequestDto) {
         if (userRepository.existsUserByUserName(registerRequestDto.getUserName())) {
-            throw new RuntimeException("Bu kullanıcı adı zaten kullanılıyor!");
+            throw new RuntimeException("This username is already in use!");
         }
 
-
         if (userRepository.existsByMail(registerRequestDto.getMail())) {
-            throw new RuntimeException("Bu e-posta adresi zaten kullanımda.");
+            throw new RuntimeException("This email address is already in use!");
         }
 
         User user = new User();
-        user.setUserName(registerRequestDto.getUserName());
-        user.setMail(registerRequestDto.getMail());
-        user.setPassword(registerRequestDto.getPassword());
-        user.setFirstName(registerRequestDto.getFirstName());
-        user.setLastName(registerRequestDto.getLastName());
-        user.setCity(registerRequestDto.getCity());
+        BeanUtils.copyProperties(registerRequestDto, user);
         user.setAccountCreationDate(formatDate());
 
         User savedUser = userRepository.save(user);
 
         UserResponseDto userResponseDto = new UserResponseDto();
-        userResponseDto.setUserName(savedUser.getUserName());
-        userResponseDto.setMail(savedUser.getMail());
-        userResponseDto.setFirstName(savedUser.getFirstName());
-        userResponseDto.setLastName(savedUser.getLastName());
-        userResponseDto.setCity(savedUser.getCity());
-        userResponseDto.setAccountCreationDate(savedUser.getAccountCreationDate());
+        BeanUtils.copyProperties(savedUser, userResponseDto);
 
         return userResponseDto;
     }
+
     @Override
     public UserResponseDto login(LoginRequestDto loginRequestDto) {
         User user = userRepository.findByUserName(loginRequestDto.getUsername());
 
-        if (user == null) {
-            throw new RuntimeException("Kullanıcı bulunamadı!");
-        }
-
-        if (!user.getPassword().equals(loginRequestDto.getPassword())) {
-            throw new RuntimeException("Hatalı şifre!");
+        if (user == null || !user.getPassword().equals(loginRequestDto.getPassword())) {
+            throw new RuntimeException("User not found or incorrect password!");
         }
 
         UserResponseDto userResponseDto = new UserResponseDto();
-        userResponseDto.setId(user.getId());
-        userResponseDto.setAccountCreationDate(user.getAccountCreationDate());
-        userResponseDto.setUserName(user.getUserName());
-        userResponseDto.setMail(user.getMail());
-        userResponseDto.setFirstName(user.getFirstName());
-        userResponseDto.setLastName(user.getLastName());
-        userResponseDto.setCity(user.getCity());
+        BeanUtils.copyProperties(user, userResponseDto);
+
         List<VehicleResponseDto> vehicleResponseDtoList = user.getVehicles().stream()
                 .map(vehicle -> {
                     VehicleResponseDto vehicleResponseDto = new VehicleResponseDto();
-                    vehicleResponseDto.setId(vehicle.getId());
-                    vehicleResponseDto.setVehiclesCreationDate(vehicle.getVehiclesCreationDate());
-                    vehicleResponseDto.setName(vehicle.getName());
-                    vehicleResponseDto.setBrand(vehicle.getBrand());
-                    vehicleResponseDto.setModel(vehicle.getModel());
-                    vehicleResponseDto.setPlateCode(vehicle.getPlateCode());
-                    vehicleResponseDto.setModelYear(vehicle.getModelYear());
-                    vehicleResponseDto.setActive(vehicle.isActive());
+                    BeanUtils.copyProperties(vehicle, vehicleResponseDto);
                     return vehicleResponseDto;
                 })
                 .collect(Collectors.toList());
@@ -100,14 +69,14 @@ public class AuthServiceImpl implements AuthService {
         Optional<User> optionalUser = userRepository.findById(id);
 
         if (optionalUser.isEmpty()) {
-            throw new RuntimeException("User not found");
+            throw new RuntimeException("User not found!");
         }
 
         User user = optionalUser.get();
 
         // Validate the current password
         if (!passwordRequestDto.getCurrentPassword().equals(user.getPassword())) {
-            throw new RuntimeException("Current password is incorrect");
+            throw new RuntimeException("Current password is incorrect!");
         }
 
         // Update the user's password with the new one
@@ -117,7 +86,7 @@ public class AuthServiceImpl implements AuthService {
         // Create a response indicating success
         PasswordResponseDto response = new PasswordResponseDto();
         response.setId(user.getId());
-        response.setPassword("Password changed successfully");
+        response.setPassword("Password changed successfully!");
 
         return response;
     }

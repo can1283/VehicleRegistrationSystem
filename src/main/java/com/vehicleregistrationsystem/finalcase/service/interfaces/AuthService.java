@@ -8,6 +8,7 @@ import com.vehicleregistrationsystem.finalcase.responses.UserResponseDto;
 
 public interface AuthService {
     UserResponseDto register(RegisterRequestDto registerRequestDto);
+
     UserResponseDto login(LoginRequestDto loginRequestDto);
 
     PasswordResponseDto changePass(Long id, PasswordRequestDto passwordRequestDto);

@@ -17,7 +17,6 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 public class UserRequestDto {
-
     @NotNull(message = "Username cannot be null!")
     @NotBlank(message = "Username is required!")
     @Size(min = 4, max = 16, message = "Username size must be between {min} and {max}!")

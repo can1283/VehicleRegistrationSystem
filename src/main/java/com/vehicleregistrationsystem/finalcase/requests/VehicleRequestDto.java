@@ -11,7 +11,6 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 public class VehicleRequestDto {
-
     @Nullable
     @Size(min = 2, max = 30, message = "Name size must be between {min} and {max}!")
     private String name;

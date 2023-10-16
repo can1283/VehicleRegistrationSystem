@@ -58,14 +58,18 @@ public class UserController {
 
     @GetMapping("/sorted-by-username")
     public ResponseEntity<List<UserResponseDto>> getAllUsersSortedByUserName(@RequestParam(required = false, defaultValue = "ASC") String direction) {
-        Sort.Direction sort = "DESC".equalsIgnoreCase(direction) ? Sort.Direction.DESC : Sort.Direction.ASC;
+        Sort.Direction sort = "DESC".equalsIgnoreCase(direction)
+                ? Sort.Direction.DESC
+                : Sort.Direction.ASC;
         final List<UserResponseDto> userResponseDtoList = userService.getAllUsersSortedByUserName(sort);
         return ResponseEntity.ok(userResponseDtoList);
     }
 
     @GetMapping("/sorted-by-creation-date")
     public ResponseEntity<List<UserResponseDto>> getAllUsersSortedByCreationDate(@RequestParam(required = false, defaultValue = "ASC") String direction) {
-        Sort.Direction sort = "DESC".equalsIgnoreCase(direction) ? Sort.Direction.DESC : Sort.Direction.ASC;
+        Sort.Direction sort = "DESC".equalsIgnoreCase(direction)
+                ? Sort.Direction.DESC
+                : Sort.Direction.ASC;
         final List<UserResponseDto> userResponseDtoList = userService.getAllUsersSortedByCreationDate(sort);
         return ResponseEntity.ok(userResponseDtoList);
     }

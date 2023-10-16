@@ -12,8 +12,6 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 public class PasswordRequestDto {
-
-
     @NotNull(message = "Password cannot be null!")
     @Size(min = 8, max = 16, message = "Password size must be between {min} and {max}!")
     @NotBlank(message = "Password is required!")

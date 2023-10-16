@@ -11,7 +11,6 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-
 @RestController
 @RequestMapping("/api/vehicles")
 @RequiredArgsConstructor
@@ -56,7 +55,9 @@ public class VehicleController {
             @RequestParam(required = false, defaultValue = "ASC") String sortDirection,
             @RequestParam(required = false, defaultValue = "brand") String sortBy)
     {
-        Sort.Direction direction = "ASC".equalsIgnoreCase(sortDirection) ? Sort.Direction.ASC : Sort.Direction.DESC;
+        Sort.Direction direction = "ASC".equalsIgnoreCase(sortDirection)
+                ? Sort.Direction.ASC
+                : Sort.Direction.DESC;
         final List<VehicleResponseDto> vehicleResponseDtoList = vehicleService.getAllVehiclesSorted(userId, direction, sortBy);
         return ResponseEntity.ok(vehicleResponseDtoList);
     }
@@ -72,15 +73,13 @@ public class VehicleController {
     }
 
     @GetMapping("/byBrand")
-    public ResponseEntity<List<VehicleResponseDto>> getVehiclesByBrand(
-            @RequestParam(name = "brand") String brand) {
+    public ResponseEntity<List<VehicleResponseDto>> getVehiclesByBrand(@RequestParam(name = "brand") String brand) {
         List<VehicleResponseDto> vehicles = vehicleService.getVehiclesByBrand(brand);
         return ResponseEntity.ok(vehicles);
     }
 
     @GetMapping("/byModel")
-    public ResponseEntity<List<VehicleResponseDto>> getVehiclesByModel(
-            @RequestParam(name = "model") String model) {
+    public ResponseEntity<List<VehicleResponseDto>> getVehiclesByModel(@RequestParam(name = "model") String model) {
         List<VehicleResponseDto> vehicles = vehicleService.getVehiclesByModel(model);
         return ResponseEntity.ok(vehicles);
     }
