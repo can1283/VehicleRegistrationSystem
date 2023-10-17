@@ -12,8 +12,11 @@ Delete vehicles: Users have the ability to remove vehicles from the system, prov
 - Spring Data
 - MySQL Database
 - Hibernate
+- Swagger
 - React.js
 - Tailwind
+- Formik
+- Axios
 
 ## Requirements
 - JDK 20
