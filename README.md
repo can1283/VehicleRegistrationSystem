@@ -2,9 +2,9 @@
 The vehicle registration system is a comprehensive full-stack web application developed using Spring Boot and React. It serves as the final project of a 6-month full-stack bootcamp run by Patika and Kodluyoruz, and is designed to showcase the skills and knowledge acquired during the programme. This project includes various functionalities such as listing, registering, deleting and editing vehicles, as well as user authentication through login and registration processes.
 
 ### Key features:
-List vehicles: The system allows users to view a list of registered vehicles, providing essential details and information.
-Register vehicles: Users can easily add new vehicles to the system by providing the necessary vehicle details, ensuring a well-organised and up-to-date vehicle register.
-Edit vehicles: The system allows users to update and change existing vehicle information, keeping records accurate and up to date.
+List vehicles: The system allows users to view a list of registered vehicles, providing essential details and information.  
+Register vehicles: Users can easily add new vehicles to the system by providing the necessary vehicle details, ensuring a well-organised and up-to-date vehicle register.  
+Edit vehicles: The system allows users to update and change existing vehicle information, keeping records accurate and up to date.  
 Delete vehicles: Users have the ability to remove vehicles from the system, providing flexibility and control over the registry.
 
 ## Tech Stack
