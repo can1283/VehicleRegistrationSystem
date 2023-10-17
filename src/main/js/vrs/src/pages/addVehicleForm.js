@@ -35,101 +35,102 @@ const AddVehicleForm = () => {
 
     return (
         <>
-        <div className="bg-gradient-to-r from-cyan-600 to-blue-500 w-full h-full absolute"></div>
-    <div className="absolute flex align-items-center justify-center w-full h-full">
-        <div className="bg-white w-full max-w-md mx-auto shadow-2xl border border-2 rounded-2xl px-10 py-8">
-            <h2 className="text-2xl font-bold mb-4">Add New Vehicle</h2>
-            <Formik
-                initialValues={{
-                    name: '',
-                    brand: '',
-                    model: '',
-                    modelYear: '',
-                    plateCode: '',
-                    active: true,
-                }}
-                validationSchema={validationSchema}
-                onSubmit={async (values, { setSubmitting, setErrors }) => {
-                    try {
-                        const userId = localStorage.getItem('id');
-                        await axios.post(`http://localhost:8080/api/vehicles/${userId}`, values);
-                        navigation('/dashboard');
-                    } catch (error) {
-                        setErrorMessage(error.response.data.plateCode)
-                    }
-                    setSubmitting(false);
-                }}
-            >
-                <Form>
-                    <div>
-                        <label className="block font-medium">Vehicle Name:</label>
-                        <Field
-                            type="text"
-                            name="name"
-                            className="p-2 border border-gray-100 rounded-xl outline-0 w-full"
-                        />
-                        <ErrorMessage name="name" component="div" className="text-red-500" />
-                    </div>
-                    <div>
-                        <label className="block font-medium mt-4">Brand:</label>
-                        <Field
-                            type="text"
-                            name="brand"
-                            className="p-2 border border-gray-100 rounded-xl outline-0 w-full"
-                        />
-                        <ErrorMessage name="brand" component="div" className="text-red-500" />
-                    </div>
-                    <div>
-                        <label className="block font-medium mt-4">Model:</label>
-                        <Field
-                            type="text"
-                            name="model"
-                            className="p-2 border border-gray-100 rounded-xl outline-0 w-full"
-                        />
-                        <ErrorMessage name="model" component="div" className="text-red-500" />
-                    </div>
-                    <div>
-                        <label className="block font-medium mt-4">Model Year:</label>
-                        <Field
-                            type="text"
-                            name="modelYear"
-                            placeholder="2023"
-                            className="p-2 border border-gray-100 rounded-xl outline-0 w-full"
-                        />
-                        <ErrorMessage name="modelYear" component="div" className="text-red-500" />
-                    </div>
-                    <div>
-                        <label className="block font-medium mt-4">Plate Code:</label>
-                        <Field
-                            type="text"
-                            name="plateCode"
-                            className="p-2 border border-gray-100 rounded-xl outline-0 w-full"
-                        />
-                        <ErrorMessage name="plateCode" component="div" className="text-red-500" />
-                    </div>
-                    <div>
-                        <label className="inline-block font-medium mt-4 mb-4 mr-2">Active:</label>
-                        <Field type="checkbox" name="active" />
-                    </div>
-                    <div className={"flex justify-between gap-2"}>
-                        <button
-                            type="submit"
-                            className="bg-indigo-700 p-2 rounded-xl text-m text-cyan-50 shadow-sm outline-0 w-75"
-                        >
-                            Add Vehicle
-                        </button>
-                        <Link to={"/dashboard"}>
-                            <button className=" bg-indigo-500 text-white rounded-xl w-32 p-2">Back
-                            </button>
-                        </Link>
-                        {errorMessage && (
-                            <div className="text-red-500 mt-4">{errorMessage}</div>
-                        )}
-                    </div>
-                </Form>
-            </Formik>
-        </div>
-    </div>
+            <div className="bg-gradient-to-r from-cyan-600 to-blue-500 w-full h-full absolute"></div>
+            <div className="absolute flex items-center justify-center w-full h-full">
+                <div className="bg-white w-full max-w-md mx-auto shadow-2xl border-2 rounded-2xl px-10 py-8">
+                    <h2 className="text-2xl font-bold mb-4">Add New Vehicle</h2>
+                    <Formik
+                        initialValues={{
+                            name: "",
+                            brand: "",
+                            model: "",
+                            modelYear: "",
+                            plateCode: "",
+                            active: true,
+                        }}
+                        validationSchema={validationSchema}
+                        onSubmit={async (values, { setSubmitting, setErrors }) => {
+                            try {
+                                const userId = localStorage.getItem("id");
+                                await axios.post(`http://localhost:8080/api/vehicles/${userId}`, values);
+                                navigation("/dashboard");
+                            } catch (error) {
+                                setErrorMessage(error.response.data.plateCode);
+                            }
+                            setSubmitting(false);
+                        }}
+                    >
+                        <Form>
+                            <div className="mt-4">
+                                <label className="block font-medium">Vehicle Name:</label>
+                                <Field
+                                    type="text"
+                                    name="name"
+                                    className="p-2 border border-gray-300 rounded-xl outline-none w-full"
+                                />
+                                <ErrorMessage name="name" component="div" className="text-red-500" />
+                            </div>
+                            <div className="mt-4">
+                                <label className="block font-medium">Brand:</label>
+                                <Field
+                                    type="text"
+                                    name="brand"
+                                    className="p-2 border border-gray-300 rounded-xl outline-none w-full"
+                                />
+                                <ErrorMessage name="brand" component="div" className="text-red-500" />
+                            </div>
+                            <div className="mt-4">
+                                <label className="block font-medium">Model:</label>
+                                <Field
+                                    type="text"
+                                    name="model"
+                                    className="p-2 border border-gray-300 rounded-xl outline-none w-full"
+                                />
+                                <ErrorMessage name="model" component="div" className="text-red-500" />
+                            </div>
+                            <div className="mt-4">
+                                <label className="block font-medium">Model Year:</label>
+                                <Field
+                                    type="text"
+                                    name="modelYear"
+                                    placeholder="2023"
+                                    className="p-2 border border-gray-300 rounded-xl outline-none w-full"
+                                />
+                                <ErrorMessage name="modelYear" component="div" className="text-red-500" />
+                            </div>
+                            <div className="mt-4">
+                                <label className="block font-medium">Plate Code:</label>
+                                <Field
+                                    type="text"
+                                    name="plateCode"
+                                    className="p-2 border border-gray-300 rounded-xl outline-none w-full"
+                                />
+                                <ErrorMessage name="plateCode" component="div" className="text-red-500" />
+                            </div>
+                            <div className="mt-4 flex align-middle justify-start">
+                                <label className="inline-block font-medium mb-2">Active:</label>
+                                <div className={"inline-block"}>
+                                    <Field type="checkbox" name="active"/>
+                                </div>
+                            </div>
+                            <div className="flex justify-between mt-4 gap-2">
+                                <button
+                                    type="submit"
+                                    className="bg-indigo-700 px-4 py-2 rounded-xl text-m text-cyan-50 shadow-outline-none w-full"
+                                >
+                                    Add Vehicle
+                                </button>
+                                <Link to="/dashboard">
+                                    <button className="bg-indigo-500 text-white rounded-xl w-32 px-4 py-2 w-32">
+                                        Back
+                                    </button>
+                                </Link>
+                            </div>
+                            {errorMessage && <div className="text-red-500 mt-4">{errorMessage}</div>}
+                        </Form>
+                    </Formik>
+                </div>
+            </div>
         </>
 );
 };

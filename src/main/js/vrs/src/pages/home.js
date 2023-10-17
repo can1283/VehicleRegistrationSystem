@@ -7,7 +7,7 @@ import Logo from "../assets/NCarsWhite.svg";
 const Home = () => {
     return (
         <div className="w-full h-screen flex flex-col relative overflow-hidden">
-            <img src={Logo} alt={"logo"} className={"w-40 absolute p-4"}/>
+            <img src={Logo} alt={"logo"} className={"w-56 absolute p-6"}/>
             <h1 className={"absolute text-cyan-50 text-8xl mt-48 ml-4 user-select-none"}>Vehicle <br/> Registration <br/> System
             </h1>
             <p className={"absolute mt-[480px] p-4 w-[820px] text-lg text-blue-200"}>Welcome to our Vehicle Registration System!
@@ -26,7 +26,6 @@ const Home = () => {
                 </Link>
             </div>
 
-            {/* Arka plan görüntüsü */}
             <img className="object-cover w-full h-full" src={Background} alt="background"
                  style={{pointerEvents: "none", userSelect: "none"}}/>
 

@@ -48,7 +48,6 @@ const RegisterForm = () => {
 
     const handleSubmit = async (values) => {
         try {
-            // Simulate API request here
             await new Promise((resolve) => setTimeout(resolve, 1000));
             await axios.post("http://localhost:8080/api/auth/register", values);
             setSuccessMessage("Registration successful!");
@@ -62,100 +61,100 @@ const RegisterForm = () => {
 
     return (
         <>
-        <div className={"bg-gradient-to-r from-cyan-600 to-violet-500 w-full h-full absolute"}></div>
-    <div className={"absolute bg-white px-10 py-8 flex flex-col gap-3 w-[600px] shadow-2xl border-2 rounded-2xl"}>
-        <h2 className={"text-2xl font-bold mb-2"}>Sign Up</h2>
-        {successMessage && (
-            <div className="text-green-500 mb-4">{successMessage}</div>
-        )}
-        {errorMessage && <div className="text-red-500 mb-4">{errorMessage}</div>}
-        <Formik initialValues={initialValues} validationSchema={validationSchema} onSubmit={handleSubmit}>
-            <Form className={"flex flex-col gap-3"}>
-                <div className={"flex flex-row justify-between gap-2"}>
-                    <label className={"flex flex-col gap-1 text-m font-medium text-gray-900 w-50"}>
-                        Username
-                        <Field
-                            name="userName"
-                            type="text"
-                            className={"p-2 border border-gray-100 rounded-xl outline-0"}
-                        />
-                        <ErrorMessage name="userName" component="div" className="text-red-500" />
-                    </label>
-                    <label className={"flex flex-col gap-1 text-m font-medium text-gray-900 w-50"}>
-                        Mail
-                        <Field
-                            name="mail"
-                            type="email"
-                            className={"p-2 border border-gray-100 rounded-xl outline-0"}
-                        />
-                        <ErrorMessage name="mail" component="div" className="text-red-500" />
-                    </label>
-                </div>
-                <div className={"flex flex-row justify-between gap-2"}>
-                    <label className={"flex flex-col gap-1 text-m font-medium text-gray-900 w-50"}>
-                        First Name
-                        <Field
-                            name="firstName"
-                            type="text"
-                            className={"p-2 border border-gray-100 rounded-xl outline-0"}
-                        />
-                        <ErrorMessage name="firstName" component="div" className="text-red-500" />
-                    </label>
-                    <label className={"flex flex-col gap-1 text-m font-medium text-gray-900 w-50"}>
-                        Last Name
-                        <Field
-                            name="lastName"
-                            type="text"
-                            className={"p-2 border border-gray-100 rounded-xl outline-0"}
-                        />
-                        <ErrorMessage name="lastName" component="div" className="text-red-500" />
-                    </label>
-                </div>
-                <div className={"flex flex-row justify-between gap-2"}>
-                    <label htmlFor="city" className="text-m font-medium text-gray-900 w-50">
-                        Select a city
-                        <Field
-                            as="select"
-                            name="city"
-                            className="outline-0 border border-gray-300 text-gray-900 text-m rounded-xl focus:ring-blue-500 focus:border-blue-500 block w-full p-2 mt-1"
+            <div className={"bg-gradient-to-r from-cyan-600 to-violet-500 w-full h-full absolute"}></div>
+            <div className={"absolute bg-white px-10 py-8 flex flex-col gap-3 w-[550px] shadow-2xl border-2 rounded-2xl"}>
+                <h2 className={"text-2xl font-bold mb-2"}>Sign Up</h2>
+                {successMessage && (
+                    <div className="text-green-500 mb-4">{successMessage}</div>
+                )}
+                {errorMessage && <div className="text-red-500 mb-4">{errorMessage}</div>}
+                <Formik initialValues={initialValues} validationSchema={validationSchema} onSubmit={handleSubmit}>
+                    <Form className={"flex flex-col gap-3"}>
+                        <div className={"flex flex-row justify-between gap-2"}>
+                            <label className={"flex flex-col gap-1 text-m font-medium text-gray-900 w-50"}>
+                                Username
+                                <Field
+                                    name="userName"
+                                    type="text"
+                                    className={"p-2 border border-gray-300 rounded-xl outline-0"}
+                                />
+                                <ErrorMessage name="userName" component="div" className="text-red-500" />
+                            </label>
+                            <label className={"flex flex-col gap-1 text-m font-medium text-gray-900 w-50"}>
+                                Mail
+                                <Field
+                                    name="mail"
+                                    type="email"
+                                    className={"p-2  border border-gray-300 rounded-xl outline-0"}
+                                />
+                                <ErrorMessage name="mail" component="div" className="text-red-500" />
+                            </label>
+                        </div>
+                        <div className={"flex flex-row justify-between gap-2"}>
+                            <label className={"flex flex-col gap-1 text-m font-medium text-gray-900 w-50"}>
+                                First Name
+                                <Field
+                                    name="firstName"
+                                    type="text"
+                                    className={"p-2  border border-gray-300 rounded-xl outline-0"}
+                                />
+                                <ErrorMessage name="firstName" component="div" className="text-red-500" />
+                            </label>
+                            <label className={"flex flex-col gap-1 text-m font-medium text-gray-900 w-50"}>
+                                Last Name
+                                <Field
+                                    name="lastName"
+                                    type="text"
+                                    className={"p-2  border border-gray-300 rounded-xl outline-0"}
+                                />
+                                <ErrorMessage name="lastName" component="div" className="text-red-500" />
+                            </label>
+                        </div>
+                        <div className={"flex flex-row justify-between gap-2"}>
+                            <label htmlFor="city" className="text-m font-medium text-gray-900">
+                                Select a city
+                                <Field
+                                    as="select"
+                                    name="city"
+                                    className="outline-0 border border-gray-300 text-gray-900 text-m rounded-xl focus:ring-blue-500 focus:border-blue-500 block  p-2 mt-1  w-[220px]"
+                                >
+                                    <option value="" disabled>
+                                        Choose a city
+                                    </option>
+                                    {Object.entries(countries).map(([id, city]) => (
+                                        <option key={id} value={id}>
+                                            {city}
+                                        </option>
+                                    ))}
+                                </Field>
+                                <ErrorMessage name="city" component="div" className="text-red-500 " />
+                            </label>
+                            <label className={"flex flex-col gap-1 text-m font-medium text-gray-900"}>
+                                Password
+                                <Field
+                                    name="password"
+                                    type="password"
+                                    className={"p-2  border border-gray-300 rounded-xl outline-0  w-50"}
+                                />
+                                <ErrorMessage name="password" component="div" className="text-red-500" />
+                            </label>
+                        </div>
+                        <div>
+                            Already a member?{" "}
+                            <Link to={"/login"} className={"text-fuchsia-700 underline font-medium"}>
+                                Login
+                            </Link>
+                        </div>
+                        <button
+                            type="submit"
+                            className="bg-indigo-700 p-2 rounded-xl text-m w-full text-cyan-50 shadow-sm"
                         >
-                            <option value="" disabled>
-                                Choose a city
-                            </option>
-                            {Object.entries(countries).map(([id, city]) => (
-                                <option key={id} value={id}>
-                                    {city}
-                                </option>
-                            ))}
-                        </Field>
-                        <ErrorMessage name="city" component="div" className="text-red-500 " />
-                    </label>
-                    <label className={"flex flex-col gap-1 text-m font-medium text-gray-900 w-50"}>
-                        Password
-                        <Field
-                            name="password"
-                            type="password"
-                            className={"p-2 border border-gray-100 rounded-xl outline-0"}
-                        />
-                        <ErrorMessage name="password" component="div" className="text-red-500" />
-                    </label>
-                </div>
-                <div>
-                    Already a member?{" "}
-                    <Link to={"/login"} className={"text-fuchsia-700 underline font-medium"}>
-                        Login
-                    </Link>
-                </div>
-                <button
-                    type="submit"
-                    className="bg-indigo-700 p-2 rounded-xl text-m w-full text-cyan-50 shadow-sm"
-                >
-                    Register
-                </button>
-            </Form>
-        </Formik>
-    </div>
-        </>
+                            Register
+                        </button>
+                    </Form>
+                </Formik>
+            </div>
+    </>
 );
 };
 

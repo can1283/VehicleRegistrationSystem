@@ -18,5 +18,11 @@
     width: 900px;
     position: absolute;
     top: 250px;
-    left: 1000px;
+    left: 1200px;
+}
+
+[type="checkbox"]{
+    width: 15px;
+    height: 15px;
+    margin-left: 10px;
 }

@@ -30,7 +30,7 @@ const LoginForm = () => {
                 localStorage.setItem('id', res?.data?.id);
                 navigation('/dashboard');
             } catch (error) {
-                setStatus('Authentication failed. Please check your credentials.');
+                setStatus('Authentication failed. Please check your credentials!');
             }
             setSubmitting(false);
         }
@@ -49,7 +49,7 @@ const LoginForm = () => {
                         onChange={formik.handleChange}
                         onBlur={formik.handleBlur}
                         type="text"
-                        className={`p-2 border border-gray-100 rounded-xl outline-0 ${formik.touched.username && formik.errors.username ? 'border-red-500' : ''}`}
+                        className={`p-2 border border-gray-300 rounded-xl outline-0 ${formik.touched.username && formik.errors.username ? 'border-red-500' : ''}`}
                     />
                     {formik.touched.username && formik.errors.username && <div className="text-red-500">{formik.errors.username}</div>}
                 </label>
@@ -61,7 +61,7 @@ const LoginForm = () => {
                         onChange={formik.handleChange}
                         onBlur={formik.handleBlur}
                         type="password"
-                        className={`p-2 border border-gray-100 rounded-xl outline-0 ${formik.touched.password && formik.errors.password ? 'border-red-500' : ''}`}
+                        className={`p-2  border border-gray-300 rounded-xl outline-0 ${formik.touched.password && formik.errors.password ? 'border-red-500' : ''}`}
                     />
                     {formik.touched.password && formik.errors.password && <div className="text-red-500">{formik.errors.password}</div>}
                 </label>

@@ -33,9 +33,9 @@ const ChangePass = () => {
 
     return (
         <>
-            <div className={"bg-gradient-to-r from-cyan-600 to-violet-500 w-full h-full absolute"}></div>
-            <div className={"absolute flex align-items-center justify-center w-full h-full"}>
-                <div className=" bg-white shadow-2xl border border-2 rounded-2xl px-10 py-8">
+            <div className="bg-gradient-to-r from-cyan-600 to-violet-500 w-full h-full absolute"></div>
+            <div className="absolute flex items-center justify-center w-full h-full">
+                <div className="bg-white shadow-2xl border border-2 rounded-2xl px-10 py-8">
                     <h2 className="text-2xl font-semibold mb-4">Changing Password</h2>
                     <Formik
                         initialValues={{
@@ -55,10 +55,8 @@ const ChangePass = () => {
 
                             try {
                                 await axios.post(`http://localhost:8080/api/auth/change-password/${userId}`, payload);
-                                // Başarıyla parola değiştirildiğinde bir mesaj göstermek için status'i güncelle
                                 setStatus({ success: "The password has been changed successfully." });
                             } catch (e) {
-                                // Hata durumunda hata mesajını göstermek için status'i güncelle
                                 setStatus({ error: e.response.data.error });
                                 setSubmitting(false);
                             }
@@ -72,7 +70,7 @@ const ChangePass = () => {
                                         type="password"
                                         id="currentPassword"
                                         name="currentPassword"
-                                        className="p-2 border border-gray-100 rounded-xl outline-0 w-full"
+                                        className="p-2 border border-gray-300 rounded-xl outline-none w-full"
                                     />
                                     <ErrorMessage name="currentPassword" component="div" className="text-red-500" />
                                 </div>
@@ -82,13 +80,13 @@ const ChangePass = () => {
                                         type="password"
                                         id="newPassword"
                                         name="newPassword"
-                                        className="p-2 border border-gray-100 rounded-xl outline-0 w-full"
+                                        className="p-2 border border-gray-300 rounded-xl outline-none w-full"
                                     />
                                     <ErrorMessage name="newPassword" component="div" className="text-red-500" />
                                 </div>
                                 {status && status.error && <p className="text-red-500">{status.error}</p>}
                                 {status && status.success && <p className="text-green-500 mb-4 text-lg">{status.success}</p>}
-                                <div className={"flex justify-between"}>
+                                <div className="flex justify-between mt-8">
                                     <button
                                         type="submit"
                                         className="px-4 py-2 bg-indigo-700 text-white rounded-xl"
@@ -105,6 +103,7 @@ const ChangePass = () => {
                 </div>
             </div>
         </>
+
     );
 }
 
