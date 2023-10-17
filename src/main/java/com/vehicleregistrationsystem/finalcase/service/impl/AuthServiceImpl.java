@@ -74,16 +74,13 @@ public class AuthServiceImpl implements AuthService {
 
         User user = optionalUser.get();
 
-        // Validate the current password
         if (!passwordRequestDto.getCurrentPassword().equals(user.getPassword())) {
             throw new RuntimeException("Current password is incorrect!");
         }
 
-        // Update the user's password with the new one
         user.setPassword(passwordRequestDto.getNewPassword());
         userRepository.save(user);
 
-        // Create a response indicating success
         PasswordResponseDto response = new PasswordResponseDto();
         response.setId(user.getId());
         response.setPassword("Password changed successfully!");

@@ -8,9 +8,9 @@ const Home = () => {
     return (
         <div className="w-full h-screen flex flex-col relative overflow-hidden">
             <img src={Logo} alt={"logo"} className={"w-56 absolute p-6"}/>
-            <h1 className={"absolute text-cyan-50 text-8xl mt-48 ml-4 user-select-none"}>Vehicle <br/> Registration <br/> System
+            <h1 className={"absolute text-cyan-50 text-8xl mt-60 ml-4 user-select-none"}>Vehicle <br/> Registration <br/> System
             </h1>
-            <p className={"absolute mt-[480px] p-4 w-[820px] text-lg text-blue-200"}>Welcome to our Vehicle Registration System!
+            <p className={"absolute mt-[540px] p-4 w-[820px] text-lg text-blue-200"}>Welcome to our Vehicle Registration System!
                 Simplify vehicle management with us. Add, remove, register, or search for vehicles effortlessly. Your
                 one-stop solution for all things related to your vehicles. Start now!</p>
             <div className="absolute top-4 right-4 space-x-4 z-10">

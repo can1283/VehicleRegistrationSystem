@@ -57,7 +57,7 @@ const ChangePass = () => {
                                 await axios.post(`http://localhost:8080/api/auth/change-password/${userId}`, payload);
                                 setStatus({ success: "The password has been changed successfully." });
                             } catch (e) {
-                                setStatus({ error: e.response.data.error });
+                                setStatus({ error: e.response.data.message });
                                 setSubmitting(false);
                             }
                         }}
@@ -89,12 +89,12 @@ const ChangePass = () => {
                                 <div className="flex justify-between mt-8">
                                     <button
                                         type="submit"
-                                        className="px-4 py-2 bg-indigo-700 text-white rounded-xl"
+                                        className="px-4 py-2 bg-indigo-700 text-white rounded-xl outline-0"
                                     >
                                         Change Password
                                     </button>
                                     <Link to="/dashboard">
-                                        <button className="px-4 ml-4 py-2 bg-indigo-500 text-white rounded-xl">Back</button>
+                                        <button className="px-4 ml-4 py-2 bg-indigo-500 text-white rounded-xl outline-0">Back</button>
                                     </Link>
                                 </div>
                             </Form>
