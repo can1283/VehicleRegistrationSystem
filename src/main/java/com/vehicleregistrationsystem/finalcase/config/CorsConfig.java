@@ -34,6 +34,7 @@ public class CorsConfig {
         };
     }
 
+    // for auth transactions
     @Bean
     public WebMvcConfigurer authCorsConfig() {
         return new WebMvcConfigurer() {

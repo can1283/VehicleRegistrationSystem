@@ -27,6 +27,7 @@ public class UserServiceImpl implements UserService {
     public UserServiceImpl(UserRepository userRepository) {
         this.userRepository = userRepository;
     }
+    // find all
     @Override
     public List<UserResponseDto> getAllUsers() {
         List<User> users = userRepository.findAll();
@@ -35,7 +36,7 @@ public class UserServiceImpl implements UserService {
                 .collect(Collectors.toList());
     }
 
-
+    // crate user
     @Override
     public UserResponseDto createUser(UserRequestDto userRequestDTO) {
         User user = new User();
@@ -47,6 +48,7 @@ public class UserServiceImpl implements UserService {
         return mapUserToUserResponseDto(savedUser);
     }
 
+    // update user
     @Override
     public UserResponseDto updateUser(Long userId, UserRequestDto userRequestDTO) {
         User existingUser = userRepository.findById(userId)
@@ -60,6 +62,7 @@ public class UserServiceImpl implements UserService {
         return mapUserToUserResponseDto(updatedUser);
     }
 
+    // delete user
     @Override
     public void deleteUser(Long userId) {
         User existingUser = userRepository.findById(userId)
@@ -68,6 +71,7 @@ public class UserServiceImpl implements UserService {
         userRepository.delete(existingUser);
     }
 
+    // get users by id
     @Override
     public UserResponseDto getUserById(Long userId) {
         User user = userRepository.findById(userId)
@@ -75,6 +79,7 @@ public class UserServiceImpl implements UserService {
         return mapUserToUserResponseDto(user);
     }
 
+    // pagination
     @Override
     public List<UserResponseDto> slice(int pageNo, int pageSize) {
         Pageable pageable = PageRequest.of(pageNo - 1, pageSize);
@@ -85,6 +90,7 @@ public class UserServiceImpl implements UserService {
                 .collect(Collectors.toList());
     }
 
+    // sorted by username
     @Override
     public List<UserResponseDto> getAllUsersSortedByUserName(Sort.Direction direction) {
         Sort sort = Sort.by(direction, "userName");
@@ -94,6 +100,7 @@ public class UserServiceImpl implements UserService {
                 .collect(Collectors.toList());
     }
 
+    // sorted by creation date
     @Override
     public List<UserResponseDto> getAllUsersSortedByCreationDate(Sort.Direction direction) {
         Sort sort = Sort.by(direction, "accountCreationDate");
@@ -103,6 +110,7 @@ public class UserServiceImpl implements UserService {
                 .collect(Collectors.toList());
     }
 
+    // user entity -> dto
     private UserResponseDto mapUserToUserResponseDto(User user) {
         UserResponseDto userResponseDto = new UserResponseDto();
         BeanUtils.copyProperties(user, userResponseDto);
@@ -116,12 +124,14 @@ public class UserServiceImpl implements UserService {
         return userResponseDto;
     }
 
+    // vehicle entity -> dto
     private VehicleResponseDto mapVehicleToVehicleResponseDto(Vehicle vehicle) {
         VehicleResponseDto vehicleResponseDto = new VehicleResponseDto();
         BeanUtils.copyProperties(vehicle, vehicleResponseDto);
         return vehicleResponseDto;
     }
 
+    // Helper method to format the current date and time
     public String formatDate() {
         Date getCurrentTime = new Date();
         SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");

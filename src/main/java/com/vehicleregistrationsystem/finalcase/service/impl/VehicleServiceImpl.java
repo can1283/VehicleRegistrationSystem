@@ -29,6 +29,7 @@ public class VehicleServiceImpl implements VehicleService {
         this.userRepository = userRepository;
     }
 
+    // create vehicle
     @Override
     public VehicleResponseDto createVehicle(Long userId, VehicleRequestDto vehicleRequestDTO) {
         User user = userRepository.findById(userId).orElseThrow(() -> new IllegalArgumentException("User not found!"));
@@ -45,6 +46,7 @@ public class VehicleServiceImpl implements VehicleService {
         return responseDTO;
     }
 
+    // update vehicle
     @Override
     public VehicleResponseDto updateVehicle(Long vehicleId, VehicleRequestDto vehicleRequestDTO) {
         Vehicle existingVehicle = vehicleRepository.findById(vehicleId)
@@ -60,6 +62,7 @@ public class VehicleServiceImpl implements VehicleService {
         return responseDTO;
     }
 
+    // delete vehicle
     @Override
     public void deleteVehicle(Long vehicleId) {
         Vehicle existingVehicle = vehicleRepository.findById(vehicleId)
@@ -67,6 +70,7 @@ public class VehicleServiceImpl implements VehicleService {
         vehicleRepository.delete(existingVehicle);
     }
 
+    // get vehicle by id
     @Override
     public VehicleResponseDto getVehicleById(Long vehicleId) {
         Vehicle vehicle = vehicleRepository.findById(vehicleId)
@@ -77,6 +81,7 @@ public class VehicleServiceImpl implements VehicleService {
         return responseDTO;
     }
 
+    // get all vehicles by user id
     @Override
     public List<VehicleResponseDto> getAllVehiclesByUserId(Long userId) {
         User user = userRepository.findById(userId)
@@ -94,6 +99,7 @@ public class VehicleServiceImpl implements VehicleService {
         return responseDTOList;
     }
 
+    // all sorted
     @Override
     public List<VehicleResponseDto> getAllVehiclesSorted(Long userId, Sort.Direction direction, String sortBy) {
         User user = userRepository.findById(userId)
@@ -107,6 +113,7 @@ public class VehicleServiceImpl implements VehicleService {
                 .collect(Collectors.toList());
     }
 
+    // pagination
     @Override
     public List<VehicleResponseDto> sliceVehiclesByUserId(Long userId, int pageNo, int pageSize) {
         Pageable pageable = PageRequest.of(pageNo - 1, pageSize, Sort.by(Sort.Order.asc("modelYear"))); // Sıralama örneği, ihtiyaca göre değiştirilebilir
@@ -117,6 +124,7 @@ public class VehicleServiceImpl implements VehicleService {
                 .collect(Collectors.toList());
     }
 
+    // get brand
     @Override
     public List<VehicleResponseDto> getVehiclesByBrand(String brand) {
         List<Vehicle> vehicles = vehicleRepository.findByBrand(brand);
@@ -125,6 +133,7 @@ public class VehicleServiceImpl implements VehicleService {
                 .collect(Collectors.toList());
     }
 
+    // get model
     @Override
     public List<VehicleResponseDto> getVehiclesByModel(String model) {
         List<Vehicle> vehicles = vehicleRepository.findByModel(model);
@@ -133,17 +142,17 @@ public class VehicleServiceImpl implements VehicleService {
                 .collect(Collectors.toList());
     }
 
+    // vehicle entity -> dto
     private VehicleResponseDto mapVehicleToResponseDto(Vehicle vehicle) {
         VehicleResponseDto responseDto = new VehicleResponseDto();
         BeanUtils.copyProperties(vehicle, responseDto);
         return responseDto;
     }
-    public Date getCurrentDateTime() {
-        return new Date();
-    }
 
+    // Helper method to format the current date and time
     public String formatDate() {
+        Date getCurrentTime = new Date();
         SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-        return simpleDateFormat.format(getCurrentDateTime());
+        return simpleDateFormat.format(getCurrentTime);
     }
 }

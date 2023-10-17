@@ -54,5 +54,29 @@ npm start
 http://localhost:3000
 ```
 
+### Endpoints
+```
+GET http://localhost:8080/api/vehicles/byBrand
+GET http://localhost:8080/api/vehicles/byModel
+GET http://localhost:8080/api/vehicles/user/{{userId}}
+GET http://localhost:8080/api/vehicles/user/{{userId}}/slice
+GET http://localhost:8080/api/vehicles/user/{{userId}}/vehicles/sorted
+POST http://localhost:8080/api/vehicles/{{userId}}
+GET http://localhost:8080/api/vehicles/{{vehicleId}}
+PUT http://localhost:8080/api/vehicles/{{vehicleId}}
+DELETE http://localhost:8080/api/vehicles/{{vehicleId}}
+GET http://localhost:8080/api/users
+POST http://localhost:8080/api/users
+GET http://localhost:8080/api/users/pageable
+GET http://localhost:8080/api/users/sorted-by-creation-date
+GET http://localhost:8080/api/users/sorted-by-username
+GET http://localhost:8080/api/users/{{userId}}
+PUT http://localhost:8080/api/users/{{userId}}
+DELETE http://localhost:8080/api/users/{{userId}}
+POST http://localhost:8080/api/auth/change-password/{{userId}}
+POST http://localhost:8080/api/auth/login
+POST http://localhost:8080/api/auth/register
+```
+
 ## Project Screen Views
 > https://drive.google.com/drive/folders/1xcGEvHd4wMFBwp3vDeXKmNWtNhxyU9dJ?usp=sharing
