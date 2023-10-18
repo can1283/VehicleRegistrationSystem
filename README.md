@@ -83,6 +83,3 @@ http://localhost:3000
   }
 ]
 ```
-
-## Project Screen Views
-> https://drive.google.com/drive/folders/1xcGEvHd4wMFBwp3vDeXKmNWtNhxyU9dJ?usp=sharing
