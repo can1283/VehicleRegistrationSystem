@@ -33,8 +33,8 @@ frontend = src/main/js/vrs
 ## Database Configuration
 ```
 spring.datasource.url=jdbc:mysql://localhost:3306/vrs
-spring.datasource.username=yourusername
-spring.datasource.password=yourpassword
+spring.datasource.username=username
+spring.datasource.password=password
 spring.datasource.driver-class-name=com.mysql.cj.jdbc.Driver
 spring.jpa.hibernate.ddl-auto=update
 spring.jpa.show-sql=true
