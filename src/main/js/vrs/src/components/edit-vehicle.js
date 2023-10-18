@@ -82,7 +82,7 @@ const EditVehicle = () => {
 
     return (
         <>
-            <div className="bg-gradient-to-r from-cyan-600 to-violet-500 w-full h-full absolute"></div>
+            <div className="bg-gradient-to-t from-blue-700 to-blue-900 w-full h-full absolute"></div>
             <div className="absolute flex items-center justify-center w-full h-full">
                 <div className="flex items-center justify-center bg-white rounded-2xl">
                     <Formik

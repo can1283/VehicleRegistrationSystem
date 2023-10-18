@@ -3,7 +3,7 @@ import Dashboard from "../pages/dashboard";
 import Register from "../pages/register";
 import Login from "../pages/login";
 import Home from "../pages/home";
-import AddVehicleForm from "../pages/addVehicleForm";
+import AddVehicleForm from "../components/addVehicleForm";
 import ChangePass from "../components/change-pass";
 import EditVehicle from "../components/edit-vehicle";
 

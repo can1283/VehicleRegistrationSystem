@@ -4,11 +4,14 @@ import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 import { Formik, Field, Form, ErrorMessage } from "formik";
 import * as Yup from "yup";
+import {IoEyeSharp} from "react-icons/io5";
+import {BsFillEyeSlashFill} from "react-icons/bs";
 
 const RegisterForm = () => {
     const navigation = useNavigate();
     const [successMessage, setSuccessMessage] = useState("");
     const [errorMessage, setErrorMessage] = useState("");
+    const [showPassword, setShowPassword] = useState(false);
 
     const initialValues = {
         userName: "",
@@ -61,7 +64,7 @@ const RegisterForm = () => {
 
     return (
         <>
-            <div className={"bg-gradient-to-r from-cyan-600 to-violet-500 w-full h-full absolute"}></div>
+            <div className={"bg-gradient-to-t from-blue-700 to-blue-900 w-full h-full absolute"}></div>
             <div className={"absolute bg-white px-10 py-8 flex flex-col gap-3 w-[550px] shadow-2xl border-2 rounded-2xl"}>
                 <h2 className={"text-2xl font-bold mb-2"}>Sign Up</h2>
                 {successMessage && (
@@ -129,11 +132,17 @@ const RegisterForm = () => {
                                 </Field>
                                 <ErrorMessage name="city" component="div" className="text-red-500 " />
                             </label>
-                            <label className={"flex flex-col gap-1 text-m font-medium text-gray-900"}>
+                            <label className={"flex flex-col gap-1 text-m font-medium text-gray-900 w-50 relative"}>
+                                <span
+                                    className="left-48 top-10 cursor-pointer absolute"
+                                    onClick={() => setShowPassword(!showPassword)}
+                                >
+                                    {showPassword ? <BsFillEyeSlashFill /> : <IoEyeSharp />}
+                                </span>
                                 Password
                                 <Field
                                     name="password"
-                                    type="password"
+                                    type={showPassword ? "text" : "password"}
                                     className={"p-2  border border-gray-300 rounded-xl outline-0  w-50"}
                                 />
                                 <ErrorMessage name="password" component="div" className="text-red-500" />

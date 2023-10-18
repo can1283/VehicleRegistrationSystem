@@ -35,7 +35,7 @@ const AddVehicleForm = () => {
 
     return (
         <>
-            <div className="bg-gradient-to-r from-cyan-600 to-violet-500 w-full h-full absolute"></div>
+            <div className="bg-gradient-to-t from-blue-700 to-blue-900 w-full h-full absolute"></div>
             <div className="absolute flex items-center justify-center w-full h-full">
                 <div className="bg-white w-full max-w-md mx-auto shadow-2xl border-2 rounded-2xl px-10 py-8">
                     <h2 className="text-2xl font-bold mb-4">Add New Vehicle</h2>
