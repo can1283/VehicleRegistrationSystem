@@ -65,6 +65,7 @@ http://localhost:3000
     "accountCreationDate": "string",
     "userName": "string",
     "mail": "string",
+    "password": "string",
     "firstName": "string",
     "lastName": "string",
     "city": "ADANA",

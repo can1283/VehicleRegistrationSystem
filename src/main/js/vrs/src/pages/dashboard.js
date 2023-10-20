@@ -136,15 +136,6 @@ const Dashboard = () => {
         setIsSortedPopoverOpen(false);
     };
 
-    function showAlert(message) {
-        const alertDiv = document.getElementById("alert");
-        alertDiv.innerHTML = `<div class="bg-red-500 text-white px-4 py-2 rounded-md shadow-md">${message}</div>`;
-        alertDiv.style.display = "block";
-
-        setTimeout(() => {
-            alertDiv.style.display = "none";
-        }, 3000);
-    }
 
     return (
         <div className=" wrapper flex flex-col select-none">
@@ -152,7 +143,7 @@ const Dashboard = () => {
                 <div className="left">
                     <FaCircleNodes className={"text-[45px]"}/>
                 </div>
-                <div className="right flex gap-2 p-2 items-center">
+                <div className="right flex gap-2 p-2 items-center ">
                     <Link to="/add">
                         <button className="bg-blue-500 transition hover:bg-indigo-700 shadow text-white px-4 py-2 rounded-lg">
                             Add Vehicles
@@ -240,14 +231,14 @@ const Dashboard = () => {
                     </div>
                 </div>
             </div>
-            <div className="">
+            <div className="wrapper">
                 <table className="w-full">
                     <thead className="">
                     <tr className="bg-gray-50 border">
                         <th className="border font-medium text-center p-2 text-xl">#</th>
-                        <th className="border font-medium text-center p-2 text-xl">Name</th>
-                        <th className="border font-medium text-center p-2 text-xl">Brand</th>
-                        <th className="border font-medium text-center p-2 text-xl">Model</th>
+                        <th className="border font-medium text-left p-2 text-xl">Name</th>
+                        <th className="border font-medium text-left p-2 text-xl">Brand</th>
+                        <th className="border font-medium text-left p-2 text-xl">Model</th>
                         <th className="border font-medium text-center p-2 text-xl">Model Year</th>
                         <th className="border font-medium text-center p-2 text-xl">Plate Code</th>
                         <th className="border font-medium text-center p-2 text-xl">Active</th>
@@ -271,7 +262,7 @@ const Dashboard = () => {
                                 <td className="bg-white border px-2 text-xl text-gray-600">{vehicle.brand}</td>
                                 <td className="bg-white border px-2 text-xl text-gray-600">{vehicle.model}</td>
                                 <td className="bg-white border px-2 text-xl text-gray-600 text-center">{vehicle.modelYear}</td>
-                                <td className="bg-white border px-2 text-xl text-gray-600">{vehicle.plateCode}</td>
+                                <td className="bg-white border px-2 text-xl text-gray-600 text-center">{vehicle.plateCode}</td>
                                 <td className="bg-white border px-2 text-xl text-gray-600 text-center">
                                     {vehicle.active ? (
                                         <div className="flex items-center justify-center gap-3">
@@ -301,7 +292,7 @@ const Dashboard = () => {
                     </tbody>
                 </table>
             </div>
-            <div className="pagination fixed bottom-4 left-1/2 transform -translate-x-1/2">
+            <div className="pagination flex fixed bottom-8 left-1/2 transform -translate-x-1/2 shadow-2xl rounded-lg">
                 <button
                     onClick={() => setCurrentPage(currentPage - 1)}
                     disabled={currentPage === 1}
@@ -322,7 +313,7 @@ const Dashboard = () => {
             </div>
             {isAlertVisible && (
                 <div
-                    className="p-2 flex items-center justify-content-center text-lg text-red-100 rounded-lg bg-red-600 w-96 bottom-4 right-0 mr-4 fixed z-30">
+                    className="transition-all p-2 flex items-center justify-center text-lg rounded-lg bg-red-100 text-red-500 w-fit border border-red-500 bottom-8 right-0 mr-8 fixed z-30">
                     <span className="font-medium">Vehicle Deleted!</span>
                 </div>
             )}
