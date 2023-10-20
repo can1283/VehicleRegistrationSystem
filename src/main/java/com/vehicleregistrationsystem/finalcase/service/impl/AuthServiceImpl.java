@@ -21,24 +21,20 @@ public class AuthServiceImpl implements AuthService {
 
     @Override
     public UserResponseDto register(RegisterRequestDto registerRequestDto) {
-        // Check if the username is already in use
         if (userRepository.existsUserByUserName(registerRequestDto.getUserName())) {
             throw new RuntimeException("This username is already in use!");
         }
 
-        // Check if the email address is already in use
         if (userRepository.existsByMail(registerRequestDto.getMail())) {
             throw new RuntimeException("This email address is already in use!");
         }
 
-        // Create a new User object and copy properties from the registration request
         User user = new User();
         BeanUtils.copyProperties(registerRequestDto, user);
         user.setAccountCreationDate(formatDate());
 
         User savedUser = userRepository.save(user);
 
-        // Create a UserResponseDto and copy properties from the saved user
         UserResponseDto userResponseDto = new UserResponseDto();
         BeanUtils.copyProperties(savedUser, userResponseDto);
 
@@ -47,10 +43,8 @@ public class AuthServiceImpl implements AuthService {
 
     @Override
     public UserResponseDto login(LoginRequestDto loginRequestDto) {
-        // Find the user by username
         User user = userRepository.findByUserName(loginRequestDto.getUsername());
 
-        // Check if the user exists and the password is correct
         if (user == null || !user.getPassword().equals(loginRequestDto.getPassword())) {
             throw new RuntimeException("User not found or incorrect password!");
         }
@@ -58,7 +52,6 @@ public class AuthServiceImpl implements AuthService {
         UserResponseDto userResponseDto = new UserResponseDto();
         BeanUtils.copyProperties(user, userResponseDto);
 
-        // Copy vehicle information into the response
         List<VehicleResponseDto> vehicleResponseDtoList = user.getVehicles().stream()
                 .map(vehicle -> {
                     VehicleResponseDto vehicleResponseDto = new VehicleResponseDto();
@@ -73,7 +66,6 @@ public class AuthServiceImpl implements AuthService {
 
     @Override
     public PasswordResponseDto changePass(Long id, PasswordRequestDto passwordRequestDto) {
-        // Find the user by ID
         Optional<User> optionalUser = userRepository.findById(id);
 
         if (optionalUser.isEmpty()) {
@@ -82,7 +74,6 @@ public class AuthServiceImpl implements AuthService {
 
         User user = optionalUser.get();
 
-        // Check if the current password matches the user's password
         if (!passwordRequestDto.getCurrentPassword().equals(user.getPassword())) {
             throw new RuntimeException("Current password is incorrect!");
         }
