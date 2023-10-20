@@ -1,6 +1,7 @@
 package com.vehicleregistrationsystem.finalcase.service.impl;
 
-import com.vehicleregistrationsystem.finalcase.entity.*;
+import com.vehicleregistrationsystem.finalcase.entity.User;
+import com.vehicleregistrationsystem.finalcase.entity.Vehicle;
 import com.vehicleregistrationsystem.finalcase.repository.UserRepository;
 import com.vehicleregistrationsystem.finalcase.requests.UserRequestDto;
 import com.vehicleregistrationsystem.finalcase.responses.UserResponseDto;
@@ -8,12 +9,16 @@ import com.vehicleregistrationsystem.finalcase.responses.VehicleResponseDto;
 import com.vehicleregistrationsystem.finalcase.service.interfaces.UserService;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.*;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.text.SimpleDateFormat;
-import java.util.*;
+import java.util.Date;
+import java.util.List;
 import java.util.stream.Collectors;
 
 @Service
@@ -21,7 +26,6 @@ import java.util.stream.Collectors;
 public class UserServiceImpl implements UserService {
 
     private final UserRepository userRepository;
-
 
     @Autowired
     public UserServiceImpl(UserRepository userRepository) {
@@ -62,6 +66,7 @@ public class UserServiceImpl implements UserService {
         User updatedUser = userRepository.save(existingUser);
         return mapUserToUserResponseDto(updatedUser);
     }
+
 
     // delete user
     @Override

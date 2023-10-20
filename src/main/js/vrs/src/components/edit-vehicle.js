@@ -46,20 +46,20 @@ const EditVehicle = () => {
         axios
             .get(`http://localhost:8080/api/vehicles/${vehicleId}`)
             .then((response) => {
-                const vehicleData = response.data;
                 setFormData({
-                    name: vehicleData.name,
-                    brand: vehicleData.brand,
-                    model: vehicleData.model,
-                    modelYear: vehicleData.modelYear,
-                    plateCode: vehicleData.plateCode,
-                    active: vehicleData.active,
+                    name: response?.data?.name,
+                    brand: response?.data?.brand,
+                    model: response?.data?.model,
+                    modelYear: response?.data?.modelYear,
+                    plateCode: response?.data?.plateCode,
+                    active: response?.data?.active,
                 });
             })
             .catch((error) => {
                 console.error("Error fetching vehicle data:", error);
             });
     }, [vehicleId]);
+
 
     const handleChange = (e) => {
         const {name, value, type, checked} = e.target;
@@ -80,6 +80,7 @@ const EditVehicle = () => {
             });
     };
 
+
     return (
         <>
             <div className="bg-gradient-to-t from-blue-700 to-blue-900 w-full h-full absolute"></div>
@@ -87,12 +88,12 @@ const EditVehicle = () => {
                 <div className="flex items-center justify-center bg-white rounded-2xl">
                     <Formik
                         initialValues={{
-                            name: "",
-                            brand: "",
-                            model: "",
-                            modelYear: 0,
-                            plateCode: "",
-                            active: false,
+                            name: formData.name,
+                            brand: formData.brand,
+                            model: formData.model,
+                            modelYear: formData.modelYear,
+                            plateCode: formData.plateCode,
+                            active: formData.active,
                         }}
                         validationSchema={validationSchema}
                         onSubmit={(values, { setSubmitting, setErrors }) => {

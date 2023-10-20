@@ -4,14 +4,15 @@ import {Link} from "react-router-dom";
 import CarImage from '../assets/car.png'
 import Logo from "../assets/NCarsWhite.svg";
 import {FaCircleNodes} from "react-icons/fa6";
+import {FaGithub} from "react-icons/fa";
 
 const Home = () => {
     return (
         <div className="w-full h-screen flex flex-col relative overflow-hidden">
             <FaCircleNodes className={"text-[45px] text-cyan-50 absolute left-4 top-4 text-2xl"}/>
-            <h1 className={"absolute text-cyan-50 text-8xl mt-60 ml-4 user-select-none"}>Vehicle <br/> Registration <br/> System
+            <h1 className={"absolute text-cyan-50 text-8xl mt-80 ml-4 user-select-none font-thin"}>Vehicle Registration <br/> System
             </h1>
-            <p className={"absolute mt-[540px] p-4 w-[820px] text-lg text-blue-200"}>Welcome to our Vehicle Registration System!
+            <p className={"absolute mt-[530px] p-4 w-[820px] text-lg text-blue-200"}>Welcome to our Vehicle Registration System!
                 Simplify vehicle management with us. Add, remove, register, or search for vehicles effortlessly. Your
                 one-stop solution for all things related to your vehicles. <Link to="/register"> <p className={"inline-block underline"}>Start now!</p> </Link></p>
             <div className="absolute top-4 right-4 space-x-4 z-10">
@@ -38,9 +39,9 @@ const Home = () => {
                     href="https://github.com/can1283"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="transition font-monospace text-cyan-50 hover:underline hover:text-cyan-50"
+                    className="transition font-mono text-cyan-50"
                 >
-                    My GitHub Account
+                   <FaGithub className={"inline-block text-2xl mb-1"}/>  My GitHub Account
                 </a>
             </div>
         </div>

@@ -3,9 +3,12 @@ import axios from "axios";
 import {Link, useNavigate} from "react-router-dom";
 import '../App.css'
 import {AiOutlineDelete, AiOutlineDown} from "react-icons/ai";
-import {FiLogOut} from "react-icons/fi";
+import {FiEdit3, FiLogOut} from "react-icons/fi";
 import {LiaExchangeAltSolid} from "react-icons/lia";
 import {FaCircleNodes} from "react-icons/fa6";
+import {LuMail} from "react-icons/lu";
+import {GoLocation} from "react-icons/go";
+import {IoMdRemove} from "react-icons/io";
 
 const Dashboard = () => {
 
@@ -144,7 +147,7 @@ const Dashboard = () => {
     }
 
     return (
-        <div className="wrapper flex flex-col select-none">
+        <div className=" wrapper flex flex-col select-none">
             <div className="header p-4 flex justify-between items-center bg-indigo-50">
                 <div className="left">
                     <FaCircleNodes className={"text-[45px]"}/>
@@ -200,12 +203,12 @@ const Dashboard = () => {
                                 className={"font-medium text-2xl text-indigo-800"}>{userName.slice(0, 1).toUpperCase()}</div>
                             {isProfilePopoverOpen && (
                                 <div
-                                    className="absolute z-10 inline-block w-80 text-sm text-gray-500 transition-opacity duration-300 bg-white border border-gray-200 rounded-lg shadow-2xl opacity-100"
+                                    className="absolute z-10 inline-block w-80 text-sm text-gray-500 transition-opacity duration-300 bg-white rounded-lg shadow-2xl opacity-100"
                                     style={{top: "160%", left: "30%", transform: "translateX(-90%)"}}>
-                                    <div className="px-3 py-2 bg-gray-100 border-b border-gray-200 rounded-t-lg">
-                                        <h3 className="font-medium text-xl cursor-default text-gray-900">{firstName} {lastName}</h3>
-                                        <h3 className="font-semibold cursor-default text-gray-900 mt-2">{mail}</h3>
-                                        <h3 className="font-semibold cursor-default text-gray-900 mt-2">{city}</h3>
+                                    <div className="px-3 py-2 bg-indigo-900 text-white border-b border-gray-200 rounded-t-lg">
+                                        <h3 className="font-medium text-xl cursor-default">{firstName} {lastName}</h3>
+                                        <h3 className="font-medium cursor-default mt-2"><LuMail className={"inline-block text-white text-xl"}/> {mail}</h3>
+                                        <h3 className="font-medium cursor-default mt-4"><GoLocation className={"inline-block text-white text-xl"}/> {city}</h3>
                                     </div>
                                     <div className="px-3 py-2">
                                         <Link to="/password">
@@ -285,11 +288,11 @@ const Dashboard = () => {
                                 <td className="flex justify-evenly p-1.5">
                                     <Link to={`/edit/${vehicle.id}`}>
                                         <button
-                                            className="bg-blue-500 transition hover:bg-indigo-700 text-white px-8 py-2 rounded-lg">Edit
+                                            className="bg-white border border-indigo-300 transition hover:bg-indigo-300 px-4 py-2 rounded-lg"> <FiEdit3 className={"inline-block text-blue-950 text-xl"}/>
                                         </button>
                                     </Link>
                                     <button onClick={() => deleteVehicle(vehicle.id)}
-                                            className="bg-red-600 hover:bg-red-700 text-white px-8 py-2 rounded-lg">Delete
+                                            className="bg-white border border-red-400 hover:bg-red-400 text-white px-4 py-2 rounded-lg"> <IoMdRemove className={"inline-block text-red-950 text-xl"}/>
                                     </button>
                                 </td>
                             </tr>
