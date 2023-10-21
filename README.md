@@ -6,6 +6,9 @@ The Vehicle Registration System is a comprehensive full-stack web application de
 - Register vehicles: Users can easily add new vehicles to the system by providing the necessary vehicle details, ensuring a well-organised and up-to-date vehicle register.  
 - Edit vehicles: The system allows users to update and change existing vehicle information, keeping records accurate and up to date.  
 - Delete vehicles: Users have the ability to remove vehicles from the system, providing flexibility and control over the registry.
+- User Login: Allow users to log in to the system using a username and password.
+- User Registration: Enable new users to register by filling out a registration form.
+- Change Password: Allow users to change their passwords for account security.
 
 ## Tech Stack
 - Spring Boot
@@ -15,7 +18,7 @@ The Vehicle Registration System is a comprehensive full-stack web application de
 - React.js
 - Tailwind
 - Formik
-- Axios
+- Axios 
 - React Icons
 
 ## Requirements
