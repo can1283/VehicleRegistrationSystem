@@ -112,4 +112,4 @@ Vehicle:
 ```
 
 ### App Screen Views
-[Drive link of application screenshots](https://drive.google.com/drive/folders/1GjiD12eTuyQllnmXOxlOb0zZxK-eWoQs?usp=sharing)
+[Drive link of application screenshots](https://drive.google.com/drive/folders/1LdEFmjz_k6AQInVOFLdXQogRcqtEvkwY?usp=sharing)
