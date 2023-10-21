@@ -37,7 +37,7 @@ const ChangePass = () => {
         <>
             <div className="bg-gradient-to-t from-blue-700 to-blue-900 w-full h-full absolute"></div>
             <div className="absolute flex items-center justify-center w-full h-full">
-                <div className="bg-white shadow-2xl border border-2 rounded-2xl px-10 py-8">
+                <div className="bg-white shadow-2xl border-2 rounded-2xl px-10 py-8">
                     <h2 className="text-2xl font-semibold mb-4">Changing Password</h2>
                     <Formik
                         initialValues={{
@@ -120,8 +120,6 @@ const ChangePass = () => {
                                     </div>
                                     <ErrorMessage name="newPassword" component="div" className="text-red-500" />
                                 </div>
-                                {status && status.error && <p className="text-red-500">{status.error}</p>}
-                                {status && status.success && <p className="text-green-500 mb-4 text-lg">{status.success}</p>}
                                 <div className="flex justify-between mt-8">
                                     <button
                                         type="submit"
@@ -135,10 +133,13 @@ const ChangePass = () => {
                                         </button>
                                     </Link>
                                 </div>
+                                {status && status.error && <p className="absolute bottom-4 left-auto right-[825px] bg-red-100 text-red-500 px-4 py-2 rounded-md">{status.error}</p>}
+                                {status && status.success && <p className="absolute bottom-4 left-auto right-[754px] bg-green-100 text-green-500 px-4 py-2 rounded-md">{status.success}</p>}
                             </Form>
                         )}
                     </Formik>
                 </div>
+
             </div>
         </>
     );

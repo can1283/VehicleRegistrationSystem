@@ -29,7 +29,7 @@ const Dashboard = () => {
     const [isAlertVisible, setIsAlertVisible] = useState(false);
 
     const [currentPage, setCurrentPage] = useState(1);
-    const [itemsPerPage, setItemsPerPage] = useState(12); // Sayfa başına görüntülenecek öğe sayısı
+    const [itemsPerPage, setItemsPerPage] = useState(12);
     const [totalItems, setTotalItems] = useState(0);
     const indexOfLastItem = currentPage * itemsPerPage;
     const indexOfFirstItem = indexOfLastItem - itemsPerPage;
@@ -138,7 +138,7 @@ const Dashboard = () => {
 
 
     return (
-        <div className=" wrapper flex flex-col select-none">
+        <div className="wrapper flex flex-col select-none">
             <div className="header p-4 flex justify-between items-center bg-indigo-50">
                 <div className="left">
                     <FaCircleNodes className={"text-[45px]"}/>

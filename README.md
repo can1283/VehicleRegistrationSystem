@@ -1,5 +1,5 @@
 # Vehicle Registration System
-The Vehicle Registration System is a comprehensive full-stack web application developed using Spring Boot and React. It serves as the final project of a 6-month full-stack bootcamp run by Patika and Kodluyoruz, and is designed to showcase the skills and knowledge acquired during the programme. This project includes various functionalities such as listing, registering, deleting and editing vehicles, as well as user authentication through login and registration processes.
+The Vehicle Registration System is a comprehensive full-stack web application developed using Spring Boot and React. It serves as the final project of a 6-month full-stack bootcamp run by [Patika](www.patika.dev) and [Kodluyoruz](www.kodluyoruz.org), and is designed to showcase the skills and knowledge acquired during the programme. This project includes various functionalities such as listing, registering, deleting and editing vehicles, as well as user authentication through login and registration processes.
 
 ### Key features:
 List vehicles: The system allows users to view a list of registered vehicles, providing essential details and information.  
@@ -83,4 +83,30 @@ http://localhost:3000
     ]
   }
 ]
+
+User:
+{
+  "id": 49,
+  "account_creation_date": "2023-10-16 14:11:33",
+  "city": "ADANA",
+  "first_name": "Nurican",
+  "last_name": "Kasikci",
+  "password": "SifreBu1234",
+  "user_name": "nurican",
+  "mail": "nuricankasikci@gmail.com"
+  "vehicles": []
+}
+  
+Vehicle:
+{
+  "id": 85,
+  "brand": "Porsche",
+  "model": "911",
+  "model_year": 2022,
+  "name": "Porsche 911",
+  "plate_code": "07PRS07",
+  "user_id": 49,
+  "vehicles_creation_date": "2023-10-16 17:01:02",
+  "active": true
+}
 ```

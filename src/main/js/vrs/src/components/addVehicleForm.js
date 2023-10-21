@@ -126,13 +126,13 @@ const AddVehicleForm = () => {
                                     </button>
                                 </Link>
                             </div>
-                            {errorMessage && <div className="text-red-500 mt-4">{errorMessage}</div>}
                         </Form>
                     </Formik>
                 </div>
+                {errorMessage && <div className="absolute bottom-4 left-auto right-auto bg-red-100 text-red-500 px-4 py-2 rounded-md">{errorMessage}</div>}
             </div>
         </>
-);
+    );
 };
 
 export default AddVehicleForm;
