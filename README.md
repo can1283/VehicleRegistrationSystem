@@ -30,6 +30,10 @@ backend = src/main/java/com/vehicleregistrationsystem/finalcase
 frontend = src/main/js/vrs
 ```
 
+## App Screen Views
+[Drive link of application screenshots](https://drive.google.com/drive/folders/1LdEFmjz_k6AQInVOFLdXQogRcqtEvkwY?usp=sharing)
+
+
 ## Database Configuration
 ```
 spring.datasource.url=jdbc:mysql://localhost:3306/vrs
@@ -110,6 +114,3 @@ Vehicle:
   "active": true
 }
 ```
-
-### App Screen Views
-[Drive link of application screenshots](https://drive.google.com/drive/folders/1LdEFmjz_k6AQInVOFLdXQogRcqtEvkwY?usp=sharing)
