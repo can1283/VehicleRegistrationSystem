@@ -141,7 +141,7 @@ const Dashboard = () => {
         <div className="wrapper flex flex-col select-none">
             <div className="header p-4 flex justify-between items-center bg-indigo-50">
                 <div className="left">
-                    <FaCircleNodes className={"text-[45px]"}/>
+                    <FaCircleNodes className={"text-[46px]"}/>
                 </div>
                 <div className="right flex gap-2 p-2 items-center ">
                     <Link to="/add">
