@@ -16,6 +16,7 @@ The Vehicle Registration System is a comprehensive full-stack web application de
 - Tailwind
 - Formik
 - Axios
+- React Icons
 
 ## Requirements
 - JDK 20
