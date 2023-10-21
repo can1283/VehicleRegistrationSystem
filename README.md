@@ -110,3 +110,6 @@ Vehicle:
   "active": true
 }
 ```
+
+### App Screen Views
+[Drive link of application screenshots](https://drive.google.com/drive/folders/1GjiD12eTuyQllnmXOxlOb0zZxK-eWoQs?usp=sharing)
