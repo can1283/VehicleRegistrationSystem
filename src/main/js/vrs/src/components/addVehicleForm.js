@@ -1,7 +1,7 @@
-import React, { useState } from 'react';
+import React, {useState} from 'react';
 import axios from 'axios';
 import {Link, useNavigate} from 'react-router-dom';
-import { Formik, Field, Form, ErrorMessage } from 'formik';
+import {Formik, Field, Form, ErrorMessage} from 'formik';
 import * as Yup from 'yup';
 
 const AddVehicleForm = () => {
@@ -49,7 +49,7 @@ const AddVehicleForm = () => {
                             active: true,
                         }}
                         validationSchema={validationSchema}
-                        onSubmit={async (values, { setSubmitting, setErrors }) => {
+                        onSubmit={async (values, {setSubmitting, setErrors}) => {
                             try {
                                 const userId = localStorage.getItem("id");
                                 await axios.post(`http://localhost:8080/api/vehicles/${userId}`, values);
@@ -68,7 +68,7 @@ const AddVehicleForm = () => {
                                     name="name"
                                     className="p-2 border border-gray-300 rounded-xl outline-none w-full"
                                 />
-                                <ErrorMessage name="name" component="div" className="text-red-500" />
+                                <ErrorMessage name="name" component="div" className="text-red-500"/>
                             </div>
                             <div className="mt-4">
                                 <label className="block font-medium">Brand:</label>
@@ -77,7 +77,7 @@ const AddVehicleForm = () => {
                                     name="brand"
                                     className="p-2 border border-gray-300 rounded-xl outline-none w-full"
                                 />
-                                <ErrorMessage name="brand" component="div" className="text-red-500" />
+                                <ErrorMessage name="brand" component="div" className="text-red-500"/>
                             </div>
                             <div className="mt-4">
                                 <label className="block font-medium">Model:</label>
@@ -86,7 +86,7 @@ const AddVehicleForm = () => {
                                     name="model"
                                     className="p-2 border border-gray-300 rounded-xl outline-none w-full"
                                 />
-                                <ErrorMessage name="model" component="div" className="text-red-500" />
+                                <ErrorMessage name="model" component="div" className="text-red-500"/>
                             </div>
                             <div className="mt-4">
                                 <label className="block font-medium">Model Year:</label>
@@ -96,7 +96,7 @@ const AddVehicleForm = () => {
                                     placeholder="2023"
                                     className="p-2 border border-gray-300 rounded-xl outline-none w-full"
                                 />
-                                <ErrorMessage name="modelYear" component="div" className="text-red-500" />
+                                <ErrorMessage name="modelYear" component="div" className="text-red-500"/>
                             </div>
                             <div className="mt-4">
                                 <label className="block font-medium">Plate Code:</label>
@@ -105,7 +105,7 @@ const AddVehicleForm = () => {
                                     name="plateCode"
                                     className="p-2 border border-gray-300 rounded-xl outline-none w-full"
                                 />
-                                <ErrorMessage name="plateCode" component="div" className="text-red-500" />
+                                <ErrorMessage name="plateCode" component="div" className="text-red-500"/>
                             </div>
                             <div className="mt-4 flex align-middle justify-start">
                                 <label className="inline-block font-medium mb-2">Active:</label>
@@ -129,7 +129,8 @@ const AddVehicleForm = () => {
                         </Form>
                     </Formik>
                 </div>
-                {errorMessage && <div className="absolute bottom-4 left-auto right-auto bg-red-100 text-red-500 px-4 py-2 rounded-md">{errorMessage}</div>}
+                {errorMessage && <div
+                    className="absolute bottom-4 left-auto right-auto bg-red-100 text-red-500 px-4 py-2 rounded-md">{errorMessage}</div>}
             </div>
         </>
     );

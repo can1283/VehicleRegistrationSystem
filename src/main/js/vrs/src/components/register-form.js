@@ -1,8 +1,8 @@
-import React, { useState } from "react";
-import { countries } from "../utils/cities";
-import { Link, useNavigate } from "react-router-dom";
+import React, {useState} from "react";
+import {countries} from "../utils/cities";
+import {Link, useNavigate} from "react-router-dom";
 import axios from "axios";
-import { Formik, Field, Form, ErrorMessage } from "formik";
+import {Formik, Field, Form, ErrorMessage} from "formik";
 import * as Yup from "yup";
 import {IoEyeSharp} from "react-icons/io5";
 import {BsFillEyeSlashFill} from "react-icons/bs";
@@ -65,7 +65,8 @@ const RegisterForm = () => {
     return (
         <>
             <div className={"bg-gradient-to-t from-blue-700 to-blue-900 w-full h-full absolute"}></div>
-            <div className={"absolute bg-white px-10 py-8 flex flex-col gap-3 w-[550px] shadow-2xl border-2 rounded-2xl"}>
+            <div
+                className={"absolute bg-white px-10 py-8 flex flex-col gap-3 w-[550px] shadow-2xl border-2 rounded-2xl"}>
                 <h2 className={"text-2xl font-bold mb-2"}>Sign Up</h2>
                 {successMessage && (
                     <div className="text-green-500 mb-4">{successMessage}</div>
@@ -81,7 +82,7 @@ const RegisterForm = () => {
                                     type="text"
                                     className={"p-2 border border-gray-300 rounded-xl outline-0"}
                                 />
-                                <ErrorMessage name="userName" component="div" className="text-red-500" />
+                                <ErrorMessage name="userName" component="div" className="text-red-500"/>
                             </label>
                             <label className={"flex flex-col gap-1 text-m font-medium text-gray-900 w-50"}>
                                 Mail
@@ -90,7 +91,7 @@ const RegisterForm = () => {
                                     type="email"
                                     className={"p-2  border border-gray-300 rounded-xl outline-0"}
                                 />
-                                <ErrorMessage name="mail" component="div" className="text-red-500" />
+                                <ErrorMessage name="mail" component="div" className="text-red-500"/>
                             </label>
                         </div>
                         <div className={"flex flex-row justify-between gap-2"}>
@@ -101,7 +102,7 @@ const RegisterForm = () => {
                                     type="text"
                                     className={"p-2  border border-gray-300 rounded-xl outline-0"}
                                 />
-                                <ErrorMessage name="firstName" component="div" className="text-red-500" />
+                                <ErrorMessage name="firstName" component="div" className="text-red-500"/>
                             </label>
                             <label className={"flex flex-col gap-1 text-m font-medium text-gray-900 w-50"}>
                                 Last Name
@@ -110,7 +111,7 @@ const RegisterForm = () => {
                                     type="text"
                                     className={"p-2  border border-gray-300 rounded-xl outline-0"}
                                 />
-                                <ErrorMessage name="lastName" component="div" className="text-red-500" />
+                                <ErrorMessage name="lastName" component="div" className="text-red-500"/>
                             </label>
                         </div>
                         <div className={"flex flex-row justify-between gap-2"}>
@@ -130,14 +131,14 @@ const RegisterForm = () => {
                                         </option>
                                     ))}
                                 </Field>
-                                <ErrorMessage name="city" component="div" className="text-red-500 " />
+                                <ErrorMessage name="city" component="div" className="text-red-500 "/>
                             </label>
                             <label className={"flex flex-col gap-1 text-m font-medium text-gray-900 w-50 relative"}>
                                 <span
                                     className="left-48 top-10 cursor-pointer absolute"
                                     onClick={() => setShowPassword(!showPassword)}
                                 >
-                                    {showPassword ? <BsFillEyeSlashFill /> : <IoEyeSharp />}
+                                    {showPassword ? <BsFillEyeSlashFill/> : <IoEyeSharp/>}
                                 </span>
                                 Password
                                 <Field
@@ -145,7 +146,7 @@ const RegisterForm = () => {
                                     type={showPassword ? "text" : "password"}
                                     className={"p-2  border border-gray-300 rounded-xl outline-0  w-50"}
                                 />
-                                <ErrorMessage name="password" component="div" className="text-red-500" />
+                                <ErrorMessage name="password" component="div" className="text-red-500"/>
                             </label>
                         </div>
                         <div>
@@ -163,8 +164,8 @@ const RegisterForm = () => {
                     </Form>
                 </Formik>
             </div>
-    </>
-);
+        </>
+    );
 };
 
 export default RegisterForm;

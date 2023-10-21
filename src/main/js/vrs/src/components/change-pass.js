@@ -1,10 +1,10 @@
-import React, { useState } from "react";
+import React, {useState} from "react";
 import axios from "axios";
-import { Formik, Form, Field, ErrorMessage } from "formik";
+import {Formik, Form, Field, ErrorMessage} from "formik";
 import * as Yup from "yup";
-import { Link, useNavigate } from "react-router-dom";
-import { IoEyeSharp } from "react-icons/io5";
-import { BsFillEyeSlashFill } from "react-icons/bs";
+import {Link, useNavigate} from "react-router-dom";
+import {IoEyeSharp} from "react-icons/io5";
+import {BsFillEyeSlashFill} from "react-icons/bs";
 
 const ChangePass = () => {
     const [currentPassword, setCurrentPassword] = useState("");
@@ -62,7 +62,7 @@ const ChangePass = () => {
                                     "Password is not valid"
                                 ),
                         })}
-                        onSubmit={async (values, { setSubmitting, setErrors, setStatus }) => {
+                        onSubmit={async (values, {setSubmitting, setErrors, setStatus}) => {
                             const userId = localStorage.getItem("id");
                             const payload = {
                                 currentPassword: values.currentPassword,
@@ -71,14 +71,14 @@ const ChangePass = () => {
 
                             try {
                                 await axios.post(`http://localhost:8080/api/auth/change-password/${userId}`, payload);
-                                setStatus({ success: "The password has been changed successfully." });
+                                setStatus({success: "The password has been changed successfully."});
                             } catch (e) {
-                                setStatus({ error: e.response.data.message });
+                                setStatus({error: e.response.data.message});
                                 setSubmitting(false);
                             }
                         }}
                     >
-                        {({ status }) => (
+                        {({status}) => (
                             <Form>
                                 <div className="mb-4">
                                     <label htmlFor="currentPassword" className="block font-medium text-gray-700">
@@ -95,10 +95,10 @@ const ChangePass = () => {
                                             className="absolute right-4 top-4 cursor-pointer"
                                             onClick={() => setShowCurrentPassword(!showCurrentPassword)}
                                         >
-                                            {showCurrentPassword ? <IoEyeSharp /> : <BsFillEyeSlashFill />}
+                                            {showCurrentPassword ? <IoEyeSharp/> : <BsFillEyeSlashFill/>}
                                         </span>
                                     </div>
-                                    <ErrorMessage name="currentPassword" component="div" className="text-red-500" />
+                                    <ErrorMessage name="currentPassword" component="div" className="text-red-500"/>
                                 </div>
                                 <div className="mb-4">
                                     <label htmlFor="newPassword" className="block font-medium text-gray-700">
@@ -115,10 +115,10 @@ const ChangePass = () => {
                                             className="absolute right-4 top-4 cursor-pointer"
                                             onClick={() => setShowNewPassword(!showNewPassword)}
                                         >
-                                            {showNewPassword ? <IoEyeSharp /> : <BsFillEyeSlashFill />}
+                                            {showNewPassword ? <IoEyeSharp/> : <BsFillEyeSlashFill/>}
                                         </span>
                                     </div>
-                                    <ErrorMessage name="newPassword" component="div" className="text-red-500" />
+                                    <ErrorMessage name="newPassword" component="div" className="text-red-500"/>
                                 </div>
                                 <div className="flex justify-between mt-8">
                                     <button
@@ -128,13 +128,16 @@ const ChangePass = () => {
                                         Change Password
                                     </button>
                                     <Link to="/dashboard">
-                                        <button className="px-4 ml-4 py-2 bg-indigo-500 text-white rounded-xl outline-0">
+                                        <button
+                                            className="px-4 ml-4 py-2 bg-indigo-500 text-white rounded-xl outline-0">
                                             Back
                                         </button>
                                     </Link>
                                 </div>
-                                {status && status.error && <p className="absolute bottom-4 left-auto right-[825px] bg-red-100 text-red-500 px-4 py-2 rounded-md">{status.error}</p>}
-                                {status && status.success && <p className="absolute bottom-4 left-auto right-[754px] bg-green-100 text-green-500 px-4 py-2 rounded-md">{status.success}</p>}
+                                {status && status.error &&
+                                    <p className="absolute bottom-4 left-auto right-[825px] bg-red-100 text-red-500 px-4 py-2 rounded-md">{status.error}</p>}
+                                {status && status.success &&
+                                    <p className="absolute bottom-4 left-auto right-[754px] bg-green-100 text-green-500 px-4 py-2 rounded-md">{status.success}</p>}
                             </Form>
                         )}
                     </Formik>

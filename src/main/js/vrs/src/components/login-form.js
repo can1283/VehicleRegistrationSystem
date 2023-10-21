@@ -1,11 +1,10 @@
-import React, { useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import React, {useState} from "react";
+import {Link, useNavigate} from "react-router-dom";
 import axios from "axios";
-import { useFormik } from "formik";
+import {useFormik} from "formik";
 import * as Yup from "yup";
-import { BsEyeSlashFill, BsFillEyeSlashFill } from "react-icons/bs";
-import { FaRegFaceRollingEyes } from "react-icons/fa6";
-import { IoEyeSharp } from "react-icons/io5";
+import {BsFillEyeSlashFill} from "react-icons/bs";
+import {IoEyeSharp} from "react-icons/io5";
 
 const LoginForm = () => {
     const [showPassword, setShowPassword] = useState(false);
@@ -23,7 +22,7 @@ const LoginForm = () => {
             password: "",
         },
         validationSchema,
-        onSubmit: async (values, { setStatus, setSubmitting }) => {
+        onSubmit: async (values, {setStatus, setSubmitting}) => {
             try {
                 const res = await axios.post("http://localhost:8080/api/auth/login", {
                     username: values.username,
@@ -72,7 +71,7 @@ const LoginForm = () => {
                         className="left-48 top-10 z-30 cursor-pointer absolute"
                         onClick={() => setShowPassword(!showPassword)}
                     >
-                        {showPassword ? <IoEyeSharp /> : <BsFillEyeSlashFill />}
+                        {showPassword ? <IoEyeSharp/> : <BsFillEyeSlashFill/>}
                     </span>
                     Password
                     <div className="relative">

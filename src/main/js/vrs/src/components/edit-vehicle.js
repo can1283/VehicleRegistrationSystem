@@ -96,8 +96,8 @@ const EditVehicle = () => {
                             active: formData.active,
                         }}
                         validationSchema={validationSchema}
-                        onSubmit={(values, { setSubmitting, setErrors }) => {
-                            const { name, brand, model, modelYear, plateCode, active } = values;
+                        onSubmit={(values, {setSubmitting, setErrors}) => {
+                            const {name, brand, model, modelYear, plateCode, active} = values;
                             const payload = {
                                 name,
                                 brand,
@@ -116,7 +116,7 @@ const EditVehicle = () => {
                                 .catch((error) => {
                                     console.error("Error updating vehicle:", error);
                                     setSubmitting(false);
-                                    setErrors({ submit: "Error updating vehicle" });
+                                    setErrors({submit: "Error updating vehicle"});
                                 });
                         }}
                     >
@@ -129,7 +129,7 @@ const EditVehicle = () => {
                                     name="name"
                                     className="p-2 border border-gray-300 rounded-xl outline-none"
                                 />
-                                <ErrorMessage name="name" component="div" className="text-red-500" />
+                                <ErrorMessage name="name" component="div" className="text-red-500"/>
                             </div>
                             <div className="flex flex-col gap-1 text-m font-medium text-gray-900">
                                 <label>Brand:</label>
@@ -138,7 +138,7 @@ const EditVehicle = () => {
                                     name="brand"
                                     className="p-2 border border-gray-300 rounded-xl outline-none"
                                 />
-                                <ErrorMessage name="brand" component="div" className="text-red-500" />
+                                <ErrorMessage name="brand" component="div" className="text-red-500"/>
                             </div>
                             <div className="flex flex-col gap-1 text-m font-medium text-gray-900">
                                 <label>Model:</label>
@@ -147,7 +147,7 @@ const EditVehicle = () => {
                                     name="model"
                                     className="p-2 border border-gray-300  rounded-xl outline-none"
                                 />
-                                <ErrorMessage name="model" component="div" className="text-red-500" />
+                                <ErrorMessage name="model" component="div" className="text-red-500"/>
                             </div>
                             <div className="flex flex-col gap-1 text-m font-medium text-gray-900">
                                 <label>Model Year:</label>
@@ -156,7 +156,7 @@ const EditVehicle = () => {
                                     name="modelYear"
                                     className="p-2 border border-gray-300 rounded-xl outline-none"
                                 />
-                                <ErrorMessage name="modelYear" component="div" className="text-red-500" />
+                                <ErrorMessage name="modelYear" component="div" className="text-red-500"/>
                             </div>
                             <div className="flex flex-col gap-1 text-m font-medium text-gray-900">
                                 <label>Plate Code:</label>
@@ -165,7 +165,7 @@ const EditVehicle = () => {
                                     name="plateCode"
                                     className="p-2 border border-gray-300 rounded-xl outline-none"
                                 />
-                                <ErrorMessage name="plateCode" component="div" className="text-red-500" />
+                                <ErrorMessage name="plateCode" component="div" className="text-red-500"/>
                             </div>
                             <div className="text-m font-medium text-gray-900">
                                 <label>Active:</label>
@@ -175,7 +175,7 @@ const EditVehicle = () => {
                                     className="p-2 border border-gray-300 rounded-xl outline-none ml-2"
                                 />
                             </div>
-                            <ErrorMessage name="submit" component="p" className="text-red-500" />
+                            <ErrorMessage name="submit" component="p" className="text-red-500"/>
                             <div className="flex justify-between gap-2">
                                 <button
                                     type="submit"
